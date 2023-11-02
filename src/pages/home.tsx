@@ -4,7 +4,7 @@ import "../css/home.css"
 import { Navbar } from "../components/NavBar";
 import { NAVBARCONFIG } from "../components/NavBarConfig";
 import { NavBarItemEnum } from "../components/NavBarItem";
-import { EffectCoverflow, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -15,7 +15,6 @@ import 'swiper/css/effect-fade';
 
 export const Home = (): JSX.Element => {
     //const aboutImage = useCarousel()
-
     return (
         <>
             <div className="home">
@@ -24,11 +23,11 @@ export const Home = (): JSX.Element => {
                 selectedItem={NavBarItemEnum.HOME}/>
             </div>
             <Swiper
-                modules={[EffectCoverflow, Navigation, Pagination, Scrollbar, A11y]}
+                modules={[Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar, A11y]}
                 spaceBetween={30}
                 centeredSlides={true}
                 slidesPerView={3}
-                autoplay={{delay: 3000,}}
+                autoplay={{delay: 3000, disableOnInteraction: false}}
                 loop={true}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper:any) => console.log(swiper)}

@@ -1,0 +1,8 @@
+.home {
+    background-color: rgb(219, 195, 134);
+    height: 100vh
+}
+
+.active-slider {
+    color: red
+}

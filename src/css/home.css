@@ -1,8 +1,27 @@
 .home {
     background-color: rgb(219, 195, 134);
-    height: 100vh
+    height: 100vh;
 }
 
 .active-slider {
     color: red
+}
+
+.prev {
+    border: 1px solid red
+}
+
+.gallery-slider {
+    background-color: rgb(219, 195, 134);
+    position: absolute;
+    width: 80vw;
+    font-size: 100px;
+    border: 3px solid red
+}
+
+.swiper-controller {
+    border: 1px solid green;
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
 }

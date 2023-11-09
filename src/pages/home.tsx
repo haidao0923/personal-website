@@ -4,8 +4,8 @@ import "../css/home.css"
 import { Navbar } from "../components/NavBar";
 import { NAVBARCONFIG } from "../components/NavBarConfig";
 import { NavBarItemEnum } from "../components/NavBarItem";
-import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
+import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow'
@@ -36,9 +36,17 @@ export const Home = (): JSX.Element => {
                     nextEl: '.next'
                 }}
                 pagination={{el:'.swiper-pagination', clickable: true }}
-                className="swiper-controller bg-[#2e2f31]"
+                className="swiper-controller"
             >
-                <div>
+            <div className="gallery">
+
+            </div>
+                <div className="prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 64 112" fill="none" className="arrow">
+                        <path d="M2.6967 61.3033C-0.232233 58.3744 -0.232233 53.6256 2.6967 50.6967L50.4264 2.96699C53.3553 0.0380592 58.1041 0.0380592 61.033 2.96699C63.9619 5.89592 63.9619 10.6447 61.033 13.5736L18.6066 56L61.033 98.4264C63.9619 101.355 63.9619 106.104 61.033 109.033C58.1041 111.962 53.3553 111.962 50.4264 109.033L2.6967 61.3033ZM9 63.5H8V48.5H9V63.5Z" fill="#D9D9D9"/>
+                    </svg>
+                </div>
+                <div className="gallery-slider">
                     <SwiperSlide>
                         {({ isActive, isNext, isPrev }) => (
                             <div className={isActive ? "active-slider" : "none"}>
@@ -68,11 +76,6 @@ export const Home = (): JSX.Element => {
                             </div>
                         )}
                     </SwiperSlide>
-                </div>
-                <div className="prev">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 64 112" fill="none" className="absolute translate-y-[-12vw] translate-x-[0vw] z-10">
-                        <path d="M2.6967 61.3033C-0.232233 58.3744 -0.232233 53.6256 2.6967 50.6967L50.4264 2.96699C53.3553 0.0380592 58.1041 0.0380592 61.033 2.96699C63.9619 5.89592 63.9619 10.6447 61.033 13.5736L18.6066 56L61.033 98.4264C63.9619 101.355 63.9619 106.104 61.033 109.033C58.1041 111.962 53.3553 111.962 50.4264 109.033L2.6967 61.3033ZM9 63.5H8V48.5H9V63.5Z" fill="#D9D9D9"/>
-                    </svg>
                 </div>
                 <div className="next">
                     <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 64 112" fill="none" className="absolute translate-y-[-12vw] translate-x-[74vw] z-10">

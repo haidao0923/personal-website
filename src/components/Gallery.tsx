@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,12 +8,6 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-fade';
 
 import "../css/gallery.css"
-
-import image0 from '../images/0.jpg';
-import image1 from '../images/1.jpg';
-import image2 from '../images/2.jpg';
-import image3 from '../images/3.jpg';
-import image4 from '../images/4.jpg';
 
 const category_labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
                         "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -26,9 +20,25 @@ const category_names = ["(Archery, Arcade, Anime)", "Board Games", "Cooking",
                         "seek discomfort", "traveling", "upcycling",
                         "volunteering", "woodworking", "x",
                         "yugioh", "zebra"]
+const category_count = [8,3,4,4,1,9,3,3,1,0,8,5,0,0,0,6,0,0,1,21,0,0,0,0,0,0]
+
+
 
 const Gallery = () => {
-  const galleryItems = category_labels.map((_, index) => (
+    const [popupImage, setPopupImage] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
+
+    const openPopup = (imageSrc: string) => {
+      setPopupImage(imageSrc);
+      setShowPopup(true);
+    };
+
+    const closePopup = () => {
+      setPopupImage('');
+      setShowPopup(false);
+    };
+
+    const galleryItems = category_labels.map((_, index) => (
     <div key={index} className="gallery-entry">
     <div className='category-title'>
         <h1 className='category-label'>{category_labels[index]}</h1>
@@ -76,41 +86,17 @@ const Gallery = () => {
         },
       }}
     >
-        <SwiperSlide>
-            {({ isActive, isNext, isPrev }) => (
-                <div className={isActive ? "active-slider" : "none"}>
-                    <img className='gallery-image' src={image0}/>
-                </div>
+        {Array.from({ length: category_count[index] }).map((_, slideIndex) => (
+          <SwiperSlide key={slideIndex}>
+            {({ isActive }) => (
+              <div className={isActive ? "active-slider" : "none"}>
+                <img className='gallery-image' src={require(`../images/${category_labels[index]}/${slideIndex}.png`)}
+                     alt={`Image ${slideIndex}`}
+                     onClick={() => console.log(openPopup(require(`../images/${category_labels[index]}/${slideIndex}.png`)))}/>
+              </div>
             )}
-        </SwiperSlide>
-        <SwiperSlide>
-            {({ isActive, isNext, isPrev }) => (
-                <div className={isActive ? "active-slider" : "none"}>
-                    <img className='gallery-image' src={image1}/>
-                </div>
-            )}
-        </SwiperSlide>
-        <SwiperSlide>
-            {({ isActive, isNext, isPrev }) => (
-                <div className={isActive ? "active-slider" : "none"}>
-                    <img className='gallery-image' src={image2}/>
-                </div>
-            )}
-        </SwiperSlide>
-        <SwiperSlide>
-            {({ isActive, isNext, isPrev }) => (
-                <div className={isActive ? "active-slider" : "none"}>
-                    <img className='gallery-image' src={image3}/>
-                </div>
-            )}
-        </SwiperSlide>
-        <SwiperSlide>
-            {({ isActive, isNext, isPrev }) => (
-                <div className={isActive ? "active-slider" : "none"}>
-                    <img className='gallery-image' src={image4}/>
-                </div>
-            )}
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
     </Swiper>
     <div className={`next next-${index}`}>
             <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 64 112" fill="none" className="absolute translate-y-[-12vw] translate-x-[74vw] z-10">
@@ -120,7 +106,18 @@ const Gallery = () => {
 </div>
   ));
 
-  return <>{galleryItems}</>;
+  return (
+    <>
+        {galleryItems}
+        {showPopup && (
+        <div className="popup" onClick={closePopup}>
+          <div className="popup-content">
+            <img className="popup-image" src={popupImage} alt="Full Size Image" />
+          </div>
+        </div>
+        )}
+    </>);
 };
+
 
 export default Gallery;

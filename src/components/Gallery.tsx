@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,6 +8,8 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-fade';
 
 import "../css/gallery.css"
+
+// Note that we need more than 2x *slide per view (7) = 14 entries to have smooth transition
 
 const category_labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
                         "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -38,6 +40,23 @@ const Gallery = () => {
       setShowPopup(false);
     };
 
+    useEffect(() => {
+        let intervalId: NodeJS.Timeout;
+
+        // Log active slide names every 500ms
+        const logActiveSlidePaths = () => {
+            const activeSlides = document.querySelectorAll(`.active-slider`);
+            const activeSlideIndices = Array.from(activeSlides).map((slide: any) => slide.getAttribute('data-key'));
+            console.log(`Active Slide Indices`, activeSlideIndices);
+        };
+
+        // Set interval to log active slides every 500ms
+        intervalId = setInterval(logActiveSlidePaths, 500);
+
+        // Clear interval on component unmount
+        return () => clearInterval(intervalId);
+    }, []);
+
     const galleryItems = category_labels.map((_, index) => (
     <div key={index} className="gallery-entry">
     <div className='category-title'>
@@ -54,8 +73,7 @@ const Gallery = () => {
     spaceBetween={30}
     autoplay={{delay: 3000, disableOnInteraction: false}}
     loop={true}
-    onSlideChange={() => console.log('slide change')}
-    onSwiper={(swiper:any) => console.log(swiper)}
+    /** onSlideChange={() =>  } */
     navigation={{
         prevEl: `.prev-${index}`,
         nextEl: `.next-${index}`
@@ -89,10 +107,10 @@ const Gallery = () => {
         {Array.from({ length: category_count[index] }).map((_, slideIndex) => (
           <SwiperSlide key={slideIndex}>
             {({ isActive }) => (
-              <div className={isActive ? "active-slider" : "none"}>
+              <div className={isActive ? "active-slider" : "none"} data-key={`${category_labels[index]}${slideIndex}`}>
                 <img className='gallery-image' src={require(`../images/${category_labels[index]}/${slideIndex}.png`)}
                      alt={`Image ${slideIndex}`}
-                     onClick={() => console.log(openPopup(require(`../images/${category_labels[index]}/${slideIndex}.png`)))}/>
+                     onClick={() => {openPopup(require(`../images/${category_labels[index]}/${slideIndex}.png`)); console.log("Test")}}/>
               </div>
             )}
           </SwiperSlide>

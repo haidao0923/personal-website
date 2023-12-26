@@ -44,8 +44,19 @@
     object-fit: cover;
 }
 
+.gallery-image:hover {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
 .swiper-controller {
     height: 400px;
+    width: 100%;
+}
+
+.swiper-controller:hover {
+    height: 500px;
     width: 100%;
 }
 

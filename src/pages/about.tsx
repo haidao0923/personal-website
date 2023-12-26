@@ -6,24 +6,34 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
-    const inputText = "Hi there! Welcome to my About page. My name is Hai Dao and I am excited by many things. My philosophy towards life is to embrace the unexpected and to venture into uncharted terrorities. I am always open to trying new hobbies and approaches.";
+    const inputText = "Hi there! Welcome to my About page. Keep exploring and interacting with the image gallery and maybe you'll find some fun secrets 😉. If you have any feedback, please leave them in the Contact page!";
+    const delayBeforeRestart = 5000; // 5 seconds
 
-    useEffect(() => {
-      let index = 0;
+    const startTypingAnimation = () => {
+        let index = 0;
+        let intervalId: NodeJS.Timeout;
 
-      const intervalId = setInterval(() => {
+    const typingFunction = () => {
         if (index <= inputText.length) {
-        setText(inputText.substring(0, index).replace(/\n/g, '<br />'));
+          setText(inputText.substring(0, index).replace(/\n/g, '<br />'));
           index++;
         } else {
           clearInterval(intervalId);
+          setTimeout(() => {
+            startTypingAnimation(); // Restart typing animation
+          }, delayBeforeRestart);
         }
-      }, 100);
-
-      return () => {
-        clearInterval(intervalId); // Cleanup on component unmount
       };
-    }, [inputText]);
+
+      intervalId = setInterval(typingFunction, 150);
+
+      // Run the first iteration immediately
+      typingFunction();
+    };
+
+    useEffect(() => {
+      startTypingAnimation(); // Initial start
+    }, []); // Run once on component mount
 
   return (
     <div>

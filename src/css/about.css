@@ -1,5 +1,5 @@
 .about {
-    background-color: lightblue;
+    background-color: hsl(195, 65%, 85%);
     height: 80vh;
     background-image: url("https://d29fhpw069ctt2.cloudfront.net/clipart/108101/preview/1312163377_preview_8827.png");
     background-repeat: no-repeat;
@@ -14,5 +14,4 @@
     top: 12%;
     left: 54%;
     width: 36%;
-    border: 2px solid red;
 }

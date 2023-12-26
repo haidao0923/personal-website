@@ -14,7 +14,7 @@ export const Home = (): JSX.Element => {
                 <Navbar
                 items={NAVBARCONFIG}
                 selectedItem={NavBarItemEnum.HOME}/>
-                <h2 className="quote">I am more than the sum of my parts, but if you insists :P</h2>
+                <h2 className="quote">I am more than the sum of my parts, but if you insists 😜</h2>
                 <Gallery />
             </div>
             Test

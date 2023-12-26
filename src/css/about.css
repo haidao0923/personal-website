@@ -5,3 +5,14 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
+.typewriter-text {
+    font-size: 3vh;
+    line-height: 4.1vh;
+    position: relative;
+    font-family: "Source Code Pro", monospace;
+    top: 12%;
+    left: 54%;
+    width: 36%;
+    border: 2px solid red;
+}

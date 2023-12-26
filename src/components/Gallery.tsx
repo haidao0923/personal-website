@@ -108,9 +108,11 @@ const Gallery = () => {
           <SwiperSlide key={slideIndex}>
             {({ isActive }) => (
               <div className={isActive ? "active-slider" : "none"} data-key={`${category_labels[index]}${slideIndex}`}>
-                <img className='gallery-image' src={require(`../images/${category_labels[index]}/${slideIndex}.png`)}
-                     alt={`Image ${slideIndex}`}
-                     onClick={() => {openPopup(require(`../images/${category_labels[index]}/${slideIndex}.png`)); console.log("Test")}}/>
+                <div className='slide-border'>
+                  <img className='gallery-image' src={require(`../images/${category_labels[index]}/${slideIndex}.png`)}
+                      alt={`Image ${slideIndex}`}
+                      onClick={() => {openPopup(require(`../images/${category_labels[index]}/${slideIndex}.png`)); console.log("Test")}}/>
+                </div>
               </div>
             )}
           </SwiperSlide>

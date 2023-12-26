@@ -1,5 +1,4 @@
 .category-title {
-    border: 1px solid red;
     align-items: center;
     width: 15%;
     display: flex;
@@ -10,14 +9,23 @@
 .category-label {
     text-align: center;
     font-size: 90px;
-    border: 1px solid red;
     margin: 0px;
+    width: 80px;
+    background: conic-gradient(
+        from 180deg,
+        #fd004c,
+        #fe9000,
+        #fff020,
+        #3edf4b,
+        #3363ff,
+        #b102b7,
+        #fd004c
+    );
 }
 
 .category-name {
     text-align: center;
     font-size: 20px;
-    border: 1px solid red;
     margin: 0px;
 }
 
@@ -42,6 +50,20 @@
     height: 400px;
     width: 100%;
     object-fit: cover;
+    background: conic-gradient(
+        from 0deg,
+        #fd004c,
+        #fe9000,
+        #fff020,
+        #3edf4b,
+        #3363ff,
+        #b102b7,
+        #fd004c
+    );
+    background-clip: padding-box; /* Ensure the gradient is only visible within the padding area */
+    padding: 10px; /* Add padding to prevent clipping of the border gradient */
+    box-sizing: border-box; /* Include padding in total width and height */
+    animation: rotate 0.5s linear 1 forwards;
 }
 
 .gallery-image:hover {
@@ -58,6 +80,12 @@
 .swiper-controller:hover {
     height: 500px;
     width: 100%;
+}
+
+@keyframes rotate {
+    100% {
+    transform: rotate(360deg);
+    }
 }
 
 .popup {

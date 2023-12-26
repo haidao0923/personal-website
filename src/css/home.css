@@ -1,9 +1,28 @@
-.home {
+.homeOld {
     background-color: rgb(219, 195, 134);
     height: 100%;
 }
 
 .quote {
     text-align: center;
-    color:rgb(3, 90, 105)
+    color:rgb(0, 0, 0)
 }
+
+
+.home {
+    width: 100%; /* 100% of viewport width */
+    height: 100%; /* 100% of viewport height */
+    z-index: -1;
+    background: linear-gradient(to bottom, red 0%, orange 8.333%, yellow 16.666%, green 25%, blue 33.333%, indigo 41.666%, violet 50%, indigo 58.333%, blue 66.666%, green 75%, yellow 83.333%, orange 91.666%, red 100%);
+    background-size: 100% 300%; /* Larger size to cover all colors */
+    animation: gradientAnimation 30s linear infinite;
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 50% 300%;
+    }
+    100% {
+      background-position: 50% 0%; /* Red */
+    }
+  }

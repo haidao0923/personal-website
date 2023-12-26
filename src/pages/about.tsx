@@ -6,7 +6,7 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
-    const inputText = "Hi there! Welcome to my About page. Keep exploring and interacting with the image gallery and maybe you'll find some fun secrets 😉. If you have any feedback, please leave them in the Contact page!";
+    const inputText = "Hi there! Welcome to my About page. Keep exploring the image gallery and maybe you'll find some fun secrets 😉.";
     const delayBeforeRestart = 5000; // 5 seconds
 
     const startTypingAnimation = () => {

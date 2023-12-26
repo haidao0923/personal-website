@@ -10,8 +10,8 @@
     text-align: center;
     font-size: 100px;
     margin: 0px;
-    width: 80px;
-    border-radius: 30%; /* Set border-radius to 50% for an oval shape */
+    width: 100px;
+    border-radius: 50%; /* Set border-radius to 50% for an oval shape */
     background: conic-gradient(
         from 180deg,
         #fd004c,
@@ -26,7 +26,7 @@
 
 .category-name {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     margin: 0px;
     text-shadow: 2px 2px 5px black;
     color: white;

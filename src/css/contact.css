@@ -1,0 +1,28 @@
+.rate-me {
+    font-size: 60px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.contact {
+    background-color: darkseagreen;
+    height: 85vh;
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: hsla(0, 1%, 65%, 0.808);
+    border-radius: 10%;
+}
+
+.email, .name, .message, .submit {
+    font-size: 30px;
+    font-weight: bold;
+}

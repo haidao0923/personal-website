@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 const ContactForm: React.FC = () => {
   const [email, setEmail] = useState("noemail@gmail.com");
   const [name, setName] = useState("Your Secret Admirer");
-  const [message, setMessage] = useState("Write something...");
+  const [message, setMessage] = useState("");
   const [rating, setRating] = useState(0);
 
 
@@ -32,7 +32,26 @@ const ContactForm: React.FC = () => {
   const sendEmail = (e: any) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_atdncm5', 'template_i7ko30h', e.currentTarget, 'Wj1wGSlJqR_HvHw2U');
+    emailjs.sendForm('service_atdncm5', 'template_i7ko30h', e.currentTarget, 'Wj1wGSlJqR_HvHw2U')
+    .then(() => {
+      // Display a success popup
+      window.alert('Email Sent');
+
+      // Clear input values
+      setEmail("noemail@gmail.com");
+      setName("Your Secret Admirer");
+      setMessage("");
+      setRating(0);
+
+      (document.getElementById("email") as HTMLInputElement).value = "";
+      (document.getElementById("name") as HTMLInputElement).value = "";
+      (document.getElementById("message") as HTMLTextAreaElement).value = "";
+    })
+    .catch((error) => {
+      // Display an error popup if the email sending fails
+      window.alert('Failed to send email. Please try again later.');
+      console.error('Error sending email:', error);
+    });
 
     console.log("Email Sent");
     console.log(`Data Sent:\nEmail: ${email}\nName: ${name}\nMessage: ${message}\nRating ${rating}`)

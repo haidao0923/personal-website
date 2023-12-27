@@ -6,7 +6,7 @@
 
 .contact {
     background-color: darkseagreen;
-    height: 85vh;
+    height: fit-content;
     border: 2px solid blue;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
 }
 
 .form {
-    width: 40%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,5 +24,14 @@
 
 .email, .name, .message, .submit {
     font-size: 30px;
+    max-width: 50vw;
     font-weight: bold;
+}
+
+.rating {
+    border: 1px solid red;
+    width: 100%;
+    display: table;
+    display: flex;
+    justify-content: center;
 }

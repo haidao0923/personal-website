@@ -1,5 +1,5 @@
-// StarRating.tsx
 import React, { useState } from 'react';
+import "../css/contact.css"
 import styled from 'styled-components';
 
 interface StarRatingProps {
@@ -15,10 +15,11 @@ const StarRating: React.FC<StarRatingProps> = ({ onChange }) => {
   };
 
   return (
-    <RatingContainer>
+    <RatingContainer className='rating'>
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
+          className="star"
           onClick={() => handleStarClick(star)}
           filled={star <= rating}
           src={star <= rating ? require('../images/filled-star.png') : require('../images/empty-star.png')}
@@ -38,8 +39,9 @@ interface StarProps {
 }
 
 const Star = styled.img<StarProps>`
-  width: 100px;
-  height: 100px;
+  max-width: 50px;
+  height: auto;
+  align-items: center;
   cursor: pointer;
 `;
 

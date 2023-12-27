@@ -98,7 +98,7 @@ const ContactForm: React.FC = () => {
   return (
     <form className='form' onSubmit={sendEmail}>
         <h1>Email</h1>
-        <input id="email" className="email" placeholder="Email"  onChange={handleEmailChange}></input>
+        <input id="email" className="email" placeholder="Email (Optional)"  onChange={handleEmailChange}></input>
         <h1>Name</h1>
         <input id="name" className="name" placeholder="Your Secret Admirer" onChange={handleNameChange}></input>
         <h1>Message</h1>

@@ -20,10 +20,14 @@ export const Navbar = (props: NavBarProps) => {
 
     return (
     <>
-        <div className="title">
+        <Link className="title-link" to='/'>
+            <div className="title-background">
+                <div className="title">
+                    <text>Hai's Hub</text>
+                </div>
+            </div>
+        </Link>
 
-            Hai's Hub
-        </div>
         <div className="navbar">
             {itemsList}
         </div>

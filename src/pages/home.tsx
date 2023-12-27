@@ -12,8 +12,11 @@ export const Home = (): JSX.Element => {
                 <Navbar
                 items={NAVBARCONFIG}
                 selectedItem={NavBarItemEnum.HOME}/>
-                <h2 className="quote">I am more than the sum of my parts, but if you insists 😜</h2>
-                <button className="play-button">Play re🚌?</button>
+                <h2 className="quote">"I am more than the sum of my parts, but if you insists 😜"</h2>
+                <div className="play-prompt" >
+                    <button className="play-button">Play re🚌?</button>
+                    <p className="play-instruction">{'You will be shown a series of pictures from the gallery -> Quickly match the pictures to the corresponding letter of the alphabet to solve the puzzle'}</p>
+                </div>
                 <Gallery />
             </div>
             Test

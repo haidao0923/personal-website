@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StarRating from './StarRating';
 import emailjs from '@emailjs/browser';
 
@@ -8,6 +8,43 @@ const ContactForm: React.FC = () => {
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(0);
 
+  const whineText = ["", "😢😢😰😰😰😭😭😭😭🐱🐱🐱😿😿😿😿", "Fun fact, if you google translate 'Hai', it will come up as '2', but my actual name is 'Hải' which means the Sea", "I didn't think you would even consider giving me 3-star", "Thank you, I guess", "You have great taste!"];
+
+  let intervalId: NodeJS.Timeout;
+
+  const startTypingAnimation = () => {
+      let index = 0;
+      const messageElement = document.getElementById("message") as HTMLTextAreaElement;
+
+      const typingFunction = () => {
+          if (index < whineText[rating].length) {
+            messageElement.value += whineText[rating][index];
+            index++;
+          } else {
+            setTimeout(() => {
+              const newMessageValue = messageElement.value.slice(0, -whineText[rating].length);
+              messageElement.value = newMessageValue;
+            }, 1000);
+            clearInterval(intervalId);
+          }
+      };
+
+      intervalId = setInterval(typingFunction, 150);
+
+      // Run the first iteration immediately
+      typingFunction();
+  };
+
+  useEffect(() => {
+    startTypingAnimation();
+
+    // Clean up the interval on component unmount
+    return () => {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [rating]);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(`Email: ${event.target.value}`);
@@ -35,7 +72,7 @@ const ContactForm: React.FC = () => {
     emailjs.sendForm('service_atdncm5', 'template_i7ko30h', e.currentTarget, 'Wj1wGSlJqR_HvHw2U')
     .then(() => {
       // Display a success popup
-      window.alert('Email Sent');
+      window.alert('Thank you for the feedback!');
 
       // Clear input values
       setEmail("noemail@gmail.com");

@@ -7,7 +7,6 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 import ContactForm from "../components/ContactForm";
 
 export const Contact = (): JSX.Element => {
-    //const aboutImage = useCarousel()
 
     return (
         <div>

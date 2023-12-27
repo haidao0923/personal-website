@@ -13,6 +13,7 @@ export const Home = (): JSX.Element => {
                 items={NAVBARCONFIG}
                 selectedItem={NavBarItemEnum.HOME}/>
                 <h2 className="quote">I am more than the sum of my parts, but if you insists 😜</h2>
+                <button className="play-button">Play re🚌?</button>
                 <Gallery />
             </div>
             Test

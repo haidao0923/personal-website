@@ -2,10 +2,20 @@
 .quote {
     position:relative;
     width: 80%;
-    margin: 10px auto;
+    margin: 10px auto 0px auto;
     text-align: center;
     text-shadow: 2px 2px 5px black;
     color: white;
+}
+
+.gallery-instruction {
+  position:relative;
+  width: 80%;
+  margin: 5px auto;
+  text-align: center;
+  font-style: italic;
+  text-shadow: 2px 2px 5px black;
+  color: white;
 }
 
 .play-prompt {

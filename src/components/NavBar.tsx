@@ -2,7 +2,6 @@ import React from "react";
 import { NavBarItem, NavBarItemEnum, NavBarItemProps } from "./NavBarItem";
 import { Link } from "react-router-dom";
 import "../css/navbar.css"
-import TitleImage from "../images/Portrait.png"
 
 export interface NavBarProps {
     items: NavBarItemProps[]

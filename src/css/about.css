@@ -4,14 +4,16 @@
     background-image: url("https://d29fhpw069ctt2.cloudfront.net/clipart/108101/preview/1312163377_preview_8827.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    border: 1px solid hsl(195, 65%, 85%);
 }
 
 .typewriter-text {
     font-size: 3vh;
     line-height: 4.1vh;
+    word-spacing: -2px;
     position: relative;
-    font-family: "Source Code Pro", monospace;
-    top: 12%;
-    left: 54%;
-    width: 36%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    top: 9.6%;
+    left: 53.5%;
+    width: 36.6%;
 }

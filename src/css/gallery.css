@@ -8,9 +8,9 @@
 
 .category-label {
     text-align: center;
-    font-size: 100px;
+    font-size: min(120px, 15vw);
     margin: 0px;
-    width: 100px;
+    width: min(120px, 15vw);
     border-radius: 50%; /* Set border-radius to 50% for an oval shape */
     background: conic-gradient(
         from 180deg,

@@ -1,11 +1,11 @@
 .title-background {
-    font-size: 6vw;
+    font-size: 8vh;
     font-weight: bold;
     color: white;
     display: table;
     margin: 0 auto;
     width: 100%;
-    height: 8vh;
+    height: 10vh;
     display: inline-block;
     text-align: center;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png");
@@ -15,7 +15,7 @@
 }
 
 .title:hover {
-    font-size: 7vw;
+    font-size: 9vh;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png");
     background: linear-gradient(to right, yellow, orange, red);
     background-clip: text;
@@ -41,19 +41,20 @@
 .selected-navbar-links, .navbar-links {
     color: gold;
     container-name: navbar-container;
-    margin-left: 20px;
-    margin-right: 20px;
-    font-size: 3vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    font-size: max(2vh, 2vw);
     text-decoration: none;
     text-align: center;
 }
 
 .selected-navbar-links {
     color: white;
-    font-size: 4vw;
-    text-decoration: underline
+    text-decoration: underline;
+    font-size: max(2.4vh, 2.4vw);
+
 }
 
 .navbar-links:hover {
-    font-size: 4vw;
+    font-size: max(2.2vh, 2.2vw);
 }

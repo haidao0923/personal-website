@@ -22,9 +22,7 @@ const category_names = ["(Archery, Arcade, Anime)", "Board Games", "Cooking",
                         "seek discomfort", "traveling", "upcycling",
                         "volunteering", "woodworking", "x",
                         "yugioh", "zebra"]
-const category_count = [8,3,4,4,1,9,3,3,1,0,8,5,0,0,0,6,0,0,1,21,0,0,0,0,0,0]
-
-
+const category_count = [9, 10, 9, 8, 6, 5, 2, 5, 1, 2, 3, 3, 8, 4, 2, 11, 0, 4, 24, 10, 0, 0, 3, 0, 0, 1]
 
 const Gallery = () => {
     const [popupImage, setPopupImage] = useState('');
@@ -61,7 +59,7 @@ const Gallery = () => {
     <div key={index} className="gallery-entry">
     <div className='category-title'>
         <h1 className='category-label'>{category_labels[index]}</h1>
-        <h3 className='category-name'>{category_names[index]}</h3>
+        {/*<h3 className='category-name'>{category_names[index]}</h3>*/}
     </div>
     <div className={`prev prev-${index}`}>
             <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 64 112" fill="none" className="arrow">

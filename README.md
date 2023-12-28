@@ -1,46 +1,15 @@
-# Getting Started with Create React App
+# Hai's Hub 😉
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my personal website! Here you will find a **breathtaking** image gallery of my hobbies, a journal entry **written in real-time**, and a contact page with a ***fun surprise!*** 🤩
 
-## Available Scripts
+#### Sliding Gallery, Gradient Background, Rainbow Border, Hidden Text, Live Handwriting, Rotating Slides, Funny Remarks, and much more! 😲
+*Hopefully I've fixed all the visual bug to make the app scalable with all desktop/mobile and different resolutions, but if there are any lingering problems, please reach out through the contact form :)*
 
-In the project directory, you can run:
+## Pictures
+<img src="https://github.com/haidao0923/personal-website/assets/67529758/09258d53-a75f-40eb-9de7-dca2b54a631d" height="230"/>
+<img src="https://github.com/haidao0923/personal-website/assets/67529758/e8bbbc93-7615-453d-b8fb-8b1855d44920" height="230"/>
+<img src="https://github.com/haidao0923/personal-website/assets/67529758/bea391ed-4ccc-4b8d-86e1-67bc5f4768e2" height="230" width="360"/>
+<img src="https://github.com/haidao0923/personal-website/assets/67529758/411fdb93-968a-4d07-a551-d85d6c6fbbfc" height="230" width="250"/>
+<img src="https://github.com/haidao0923/personal-website/assets/67529758/0329be0c-d9f1-4677-84ba-9718cc2a2189" height="230"/>
+<img src="https://github.com/haidao0923/personal-website/assets/67529758/5f23a38d-598e-4604-b025-e2589c2bcadc" height="230"/>
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

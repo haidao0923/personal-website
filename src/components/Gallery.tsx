@@ -22,7 +22,7 @@ const category_names = ["(Archery, Arcade, Anime)", "Board Games", "Cooking",
                         "seek discomfort", "traveling", "upcycling",
                         "volunteering", "woodworking", "x",
                         "yugioh", "zebra"]
-const category_count = [9, 12, 13, 10, 7, 8, 2, 13, 3, 2, 4, 9, 9, 8, 5, 14, 1, 4, 29, 13, 0, 2, 3, 0, 2, 1];
+const category_count = [12, 23, 17, 13, 8, 14, 3, 16, 5, 2, 5, 13, 11, 9, 7, 21, 2, 6, 32, 17, 1, 3, 9, 0, 2, 2];
 
 const Gallery = () => {
     const [popupImage, setPopupImage] = useState('');

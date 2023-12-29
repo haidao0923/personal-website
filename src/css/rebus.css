@@ -1,0 +1,26 @@
+.rebusGroup {
+    justify-content: center;
+    align-items: center;
+}
+
+.gridItem {
+    width: 15vw;
+    height: 15vw;
+    max-width: 100%;
+    object-fit: cover;
+    border: 1px solid red;
+}
+
+.rebus-answer-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rebus-answer-prompt {
+    width: fit-content;
+    text-shadow: 2px 2px 5px black;
+    color: white;
+}

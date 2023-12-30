@@ -16,6 +16,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-align: center;
     gap: 10px;
 }
 
@@ -23,4 +24,16 @@
     width: fit-content;
     text-shadow: 2px 2px 5px black;
     color: white;
+}
+
+.timer-text {
+    width: fit-content;
+    margin: 0px;
+}
+
+.score-text {
+    width: fit-content;
+    text-shadow: 2px 2px 5px black;
+    color: white;
+    margin: 0px;
 }

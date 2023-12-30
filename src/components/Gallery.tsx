@@ -22,9 +22,12 @@ const category_names = ["(Archery, Arcade, Anime)", "Board Games", "Cooking",
                         "seek discomfort", "traveling", "upcycling",
                         "volunteering", "woodworking", "x",
                         "yugioh", "zebra"]
-const category_count = [12, 23, 17, 13, 8, 14, 3, 16, 5, 2, 5, 13, 11, 9, 7, 21, 2, 6, 32, 17, 1, 3, 9, 0, 2, 2];
 
-const Gallery = () => {
+interface GalleryProps {
+  category_count: number[];
+}
+
+const Gallery: React.FC<GalleryProps> = ({category_count}) => {
     const [popupImage, setPopupImage] = useState('');
     const [showPopup, setShowPopup] = useState(false);
 

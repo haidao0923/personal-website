@@ -4,13 +4,17 @@ import {SimpleGrid} from '@mantine/core';
 import word_list from  "../lists/word_list.txt";
 
 interface RebusProps {
-    numberOfColumns: number;
-  }
+    numberOfColumns: number,
+    category_count: number[];
+}
 
-const Rebus: React.FC<RebusProps> = ({numberOfColumns}) => {
+const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
     const [wordList, setWordList] = useState<string[] | null>([]);
     const [randomWord, setRandomWord] = useState<string | null>(null);
+    const [randomSeed, setRandomSeed] = useState<number[]>([]);
 
+    const [popupImage, setPopupImage] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
     const [isPlayButtonHovered, setIsPlayButtonHovered] = useState(false);
 
     const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
@@ -54,10 +58,20 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns}) => {
       setUserInput('');
     };
 
+    const openPopup = (imageSrc: string) => {
+      setPopupImage(imageSrc);
+      setShowPopup(true);
+    };
+
+    const closePopup = () => {
+      setPopupImage('');
+      setShowPopup(false);
+    };
+
     const startRebus = async () => {
         generateNewWord();
         setRebusScore(0);
-        setTimer(30);
+        setTimer(60);
 
         const id = setInterval(() => {
           setTimer((prevSeconds) => {
@@ -74,14 +88,24 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns}) => {
     }
 
     const generateNewWord = () => {
+
+        if (!wordList || wordList.length === 0) {
+          // Handle the case where wordList is not yet initialized or is empty
+          console.error("Word list is not yet available.");
+          return;
+        }
+
         const randomIndex = Math.floor(Math.random() * wordList!.length);
-        setRandomWord(wordList![randomIndex]?.toLowerCase().trim());
-        console.log(wordList![randomIndex]);
+        const newWord = wordList![randomIndex].toLowerCase().trim();
+        setRandomWord(newWord);
+        console.log(newWord);
+        const newSeed: number[] = [];
+        newWord.split('').forEach((letter, index) => (
+            newSeed.push(Math.floor(Math.random() * category_count[newWord.charCodeAt(index) - 97]))
+        ));
+        console.log(newSeed);
+        setRandomSeed(newSeed);
     };
-
-    const updateImage = () => {
-
-    }
 
     useEffect(() => {
     fetch(word_list)
@@ -110,42 +134,56 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns}) => {
       };
 
     return (
-    <div className="rebus-group">
-        <div className="play-prompt" >
-            <button
-                className="play-button"
-                onClick={startRebus}
-                onMouseEnter={handlePlayButtonHover}
-                onMouseLeave={handlePlayButtonLeave}>Play re🚌?</button>
-            <h3 className='score-text'>Score: {rebusHighscore}</h3>
-            <p className="play-instruction" style={{ display: timer > 0 || isPlayButtonHovered ? 'block' : 'none'}}>
-              {'You will be shown a group of pictures from the gallery -> Quickly match the pictures to the corresponding letter of the alphabet to solve the word'}
-            </p>
+    <>
+        <div className="rebus-group">
+            <div className="play-prompt" >
+                <button
+                    className="play-button"
+                    onClick={startRebus}
+                    onMouseEnter={handlePlayButtonHover}
+                    onMouseLeave={handlePlayButtonLeave}>Play re🚌?</button>
+                <h3 className='score-text'>Score: {rebusHighscore}</h3>
+                <p className="play-instruction" style={{ display: timer > 0 || isPlayButtonHovered ? 'block' : 'none'}}>
+                  {'You will be shown a group of pictures from the gallery -> Quickly match the pictures to the corresponding letter of the alphabet to solve the word'}
+                </p>
+            </div>
+            { randomWord && (<>
+            <div className='grid' style={gridStyle}>
+            {randomWord && randomSeed && randomWord.split('').map((letter, index) => (
+                <img
+                  key={index}
+                  className='gridItem'
+                  src={require(`../images/${letter.toUpperCase()}/${randomSeed[index]}.png`)}
+                  onClick={() => openPopup(require(`../images/${letter.toUpperCase()}/${randomSeed[index]}.png`))}
+                />
+            ))}
+            </div>
+            <div className="rebus-answer-group" style={{display: timer > 0 ? '' : 'none'}}>
+                <h2 className="rebus-answer-prompt">What is the secret word?</h2>
+                <form onSubmit={handleFormSubmit}>
+                    <input
+                      id='rebus-answer-input'
+                      className='rebus-answer-input'
+                      type="text"
+                      value={userInput}
+                      onChange={handleInputChange}
+                    />
+                    <button className='rebus-submit-button' type='submit'>Submit</button>
+                </form>
+                <h3 className='timer-text'>Timer: {timer}</h3>
+                <h3 className='score-text'>Score: {rebusScore}</h3>
+            </div>
+            </>
+            )}
         </div>
-        <div className='grid' style={gridStyle}>
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
-            <img className='gridItem' src={require(`../images/A/0.png`)} />
+        {showPopup && (
+        <div className="popup" onClick={closePopup}>
+          <div className="popup-content">
+            <img className="popup-image" src={popupImage} alt="Full Size Image" />
+          </div>
         </div>
-        <div className="rebus-answer-group" style={{display: timer > 0 ? '' : 'none'}}>
-            <h2 className="rebus-answer-prompt">What is the secret word?</h2>
-            <input
-              id='rebus-answer-input'
-              className='rebus-answer-input'
-              type="text"
-              value={userInput}
-              onChange={handleInputChange}
-            />
-            <button className='rebus-submit-button' onClick={handleFormSubmit}>Submit</button>
-            <h3 className='timer-text'>Timer: {timer}</h3>
-            <h3 className='score-text'>Score: {rebusScore}</h3>
-        </div>
-    </div>
+        )}
+    </>
     )
 };
 

@@ -17,8 +17,11 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns}) => {
     const [timer, setTimer] = useState(0);
     const [userInput, setUserInput] = useState('');
     const [rebusScore, setRebusScore] = useState(0);
-    const [rebusHighscore, setRebusHighscore] = useState(0);
-
+    const [rebusHighscore, setRebusHighscore] = useState(() => {
+      // Load the high score from localStorage on component mount
+      const storedHighscore = localStorage.getItem('rebusHighscore');
+      return storedHighscore ? parseInt(storedHighscore, 10) : 0;
+    });
 
     const handlePlayButtonHover = () => {
         setIsPlayButtonHovered(true);
@@ -37,36 +40,48 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns}) => {
       event.preventDefault();
       if (userInput.trim().toLowerCase() == randomWord) {
         alert('Congratulations! You guessed the word correctly.');
+
+        let newScore = rebusScore + 1;
+        if (newScore > rebusHighscore) {
+          setRebusHighscore(newScore)
+        }
+        setRebusScore(newScore);
+        localStorage.setItem('rebusHighscore', String(rebusHighscore + 1));
+        generateNewWord();
       } else {
         alert('Sorry, the entered word does not match the secret word.');
       }
       setUserInput('');
     };
 
-    const fetchRandomWord = async () => {
-        try {
-          const randomIndex = Math.floor(Math.random() * wordList!.length);
-          setRandomWord(wordList![randomIndex]?.toLowerCase().trim());
-          console.log(wordList![randomIndex]);
-          const id = setInterval(() => {
-            setTimer((prevSeconds) => {
-              if (prevSeconds > 0) {
-                return prevSeconds - 1;
-              } else {
-                clearInterval(id);
-                return 0;
-              }
-            });
-          }, 1000);
-
-          setIntervalId(id);
-
-        } catch (error) {
-          console.error("Error fetching random word:", error);
-        }
+    const startRebus = async () => {
+        generateNewWord();
         setRebusScore(0);
         setTimer(30);
-      };
+
+        const id = setInterval(() => {
+          setTimer((prevSeconds) => {
+            if (prevSeconds > 0) {
+              return prevSeconds - 1;
+            } else {
+              clearInterval(id);
+              return 0;
+            }
+          });
+        }, 1000);
+
+        setIntervalId(id);
+    }
+
+    const generateNewWord = () => {
+        const randomIndex = Math.floor(Math.random() * wordList!.length);
+        setRandomWord(wordList![randomIndex]?.toLowerCase().trim());
+        console.log(wordList![randomIndex]);
+    };
+
+    const updateImage = () => {
+
+    }
 
     useEffect(() => {
     fetch(word_list)
@@ -99,7 +114,7 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns}) => {
         <div className="play-prompt" >
             <button
                 className="play-button"
-                onClick={fetchRandomWord}
+                onClick={startRebus}
                 onMouseEnter={handlePlayButtonHover}
                 onMouseLeave={handlePlayButtonLeave}>Play re🚌?</button>
             <h3 className='score-text'>Score: {rebusHighscore}</h3>

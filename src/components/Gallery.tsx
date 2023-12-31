@@ -41,23 +41,6 @@ const Gallery: React.FC<GalleryProps> = ({category_count}) => {
       setShowPopup(false);
     };
 
-    useEffect(() => {
-        let intervalId: NodeJS.Timeout;
-
-        // Log active slide names every 500ms
-        const logActiveSlidePaths = () => {
-            const activeSlides = document.querySelectorAll(`.active-slider`);
-            const activeSlideIndices = Array.from(activeSlides).map((slide: any) => slide.getAttribute('data-key'));
-            //console.log(`Active Slide Indices`, activeSlideIndices);
-        };
-
-        // Set interval to log active slides every 500ms
-        intervalId = setInterval(logActiveSlidePaths, 500);
-
-        // Clear interval on component unmount
-        return () => clearInterval(intervalId);
-    }, []);
-
     const galleryItems = category_labels.map((_, index) => (
     <div key={index} className="gallery-entry">
     <div className='category-title'>

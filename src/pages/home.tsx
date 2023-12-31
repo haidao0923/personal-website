@@ -8,7 +8,7 @@ import Rebus from "../components/Rebus";
 
 export const Home = (): JSX.Element => {
 
-    const category_count = [12, 23, 17, 13, 8, 14, 3, 16, 5, 2, 5, 13, 11, 9, 7, 21, 2, 6, 32, 17, 1, 3, 9, 0, 2, 2];
+    const category_count = [12, 23, 17, 13, 8, 13, 3, 16, 5, 2, 5, 14, 11, 9, 7, 21, 2, 6, 32, 17, 1, 3, 9, 0, 2, 2];
 
     return (
         <>

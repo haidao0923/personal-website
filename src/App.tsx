@@ -18,20 +18,12 @@ function App() {
     document.title = "Hai's Hub"
   }, [])
 
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
-    const logActiveSlidePaths = () => {
-        const activeSlides = document.querySelectorAll(`.active-slider`);
-        const activeSlideIndices = Array.from(activeSlides).map((slide: any) => slide.getAttribute('data-key'));
-        checkBadgeCompletion(activeSlideIndices);
-        console.log(`Active Slide Indices`, activeSlideIndices);
-    };
-
-    intervalId = setInterval(logActiveSlidePaths, 500);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const getActiveSlideValues = () => {
+    const activeSlides = document.querySelectorAll(`.active-slider`);
+    const activeSlideIndices = Array.from(activeSlides).map((slide: any) => slide.getAttribute('data-key'));
+    checkBadgeCompletion(activeSlideIndices);
+    console.log(`Active Slide Indices`, activeSlideIndices);
+  };
 
   const lockedBadges: number[] = [];
   const unlockedBadges: number[] = [0,1,2];
@@ -54,7 +46,7 @@ function App() {
 
   return (
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Home getActiveSlideValues={getActiveSlideValues}/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/secret' element={<Secret unlockedBadges={unlockedBadges} completedBadges={completedBadges}/>}/>
         <Route path='/contact' element={<Contact/>}/>

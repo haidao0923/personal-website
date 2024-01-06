@@ -24,10 +24,11 @@ const category_names = ["(Archery, Arcade, Anime)", "Board Games", "Cooking",
                         "yugioh", "zebra"]
 
 interface GalleryProps {
-  category_count: number[];
+  category_count: number[],
+  getActiveSlideValues: () => void;
 }
 
-const Gallery: React.FC<GalleryProps> = ({category_count}) => {
+const Gallery: React.FC<GalleryProps> = ({category_count, getActiveSlideValues}) => {
     const [popupImage, setPopupImage] = useState('');
     const [showPopup, setShowPopup] = useState(false);
 
@@ -57,7 +58,7 @@ const Gallery: React.FC<GalleryProps> = ({category_count}) => {
     spaceBetween={30}
     autoplay={{delay: 20000, disableOnInteraction: false}} // Changed from 3000 for testing
     loop={true}
-    /** onSlideChange={() =>  } */
+    onSlideChange={getActiveSlideValues}
     navigation={{
         prevEl: `.prev-${index}`,
         nextEl: `.next-${index}`

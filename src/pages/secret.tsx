@@ -15,6 +15,21 @@ export const Secret: React.FC<SecretProps> = ({unlockedBadges, completedBadges})
   const attributionLink = `<a href="https://www.flaticon.com/free-icons/shield" title="shield icons">Shield icons created by justicon - Flaticon</a>`;
   const [clicked, setClicked] = useState(false);
 
+  const displayBadges = () => {
+    let completedBadgesDisplay = completedBadges.map((badgeIndex) => (
+      <img className="completed-badge" src={badges[badgeIndex].image}></img>
+    ));
+    let unlockedBadgesDisplay = unlockedBadges.map((badgeIndex) => (
+      <img className="badge" src={badges[badgeIndex].image}></img>
+    ));
+    console.log("DSFSDFSD");
+
+    return (<>
+    {completedBadgesDisplay}
+    {unlockedBadgesDisplay}
+    </>)
+  }
+
   return (
     <div>
       <Navbar items={NAVBARCONFIG} selectedItem={NavBarItemEnum.SECRET} />
@@ -22,16 +37,7 @@ export const Secret: React.FC<SecretProps> = ({unlockedBadges, completedBadges})
         <button onClick={() => setClicked(true)}>Click me!</button>
         <h1 className="secret-title">Secrets</h1>
         <div className="badge-grid">
-        {badges.map((badge, index) => {
-            return <>
-                <img className={completedBadges.includes(index) ? "completed-badge" : "badge"} src={badge.image}></img>
-                <img className={completedBadges.includes(index) ? "completed-badge" : "badge"} src={badge.image}></img>
-                <img className={completedBadges.includes(index) ? "completed-badge" : "badge"} src={badge.image}></img>
-                <img className={completedBadges.includes(index) ? "completed-badge" : "badge"} src={badge.image}></img>
-                <img className={completedBadges.includes(index) ? "completed-badge" : "badge"} src={badge.image}></img>
-
-            </>
-        })}
+        {displayBadges()}
         </div>
       </div>
     </div>

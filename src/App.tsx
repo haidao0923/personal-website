@@ -33,8 +33,9 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const unlockedBadges: number[] = [0,1];
-  const completedBadges: number[] = [0];
+  const lockedBadges: number[] = [];
+  const unlockedBadges: number[] = [0,1,2];
+  const completedBadges: number[] = [];
 
   const checkBadgeCompletion = (activeSlideIndices: string[]) => {
     //TODO
@@ -45,7 +46,7 @@ function App() {
       })) {
         console.log("Yay!!!" + unlockedBadges[i]);
         const badgeNumber = unlockedBadges.splice(i, 1)[0];
-        completedBadges.push(badgeNumber);
+        completedBadges.unshift(badgeNumber);
         alert("You completed a badge! Check the Secret tab!")
       }
     }

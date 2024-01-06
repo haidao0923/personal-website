@@ -78,7 +78,7 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
             if (prevSeconds > 0) {
               return prevSeconds - 1;
             } else {
-              alert(`Time's up! The word was ${randomWord}. Your final score is ${rebusScore}`);
+              alert(`Time's up!`);
               clearInterval(id);
               return 0;
             }

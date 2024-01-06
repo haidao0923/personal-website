@@ -9,6 +9,9 @@ import {
   Route,
 } from "react-router-dom";
 
+import badges from "./lists/badge_list";
+
+
 function App() {
 
   useEffect(() => {
@@ -18,22 +21,35 @@ function App() {
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
 
-    // Log active slide names every 500ms
     const logActiveSlidePaths = () => {
         const activeSlides = document.querySelectorAll(`.active-slider`);
         const activeSlideIndices = Array.from(activeSlides).map((slide: any) => slide.getAttribute('data-key'));
+        checkBadgeCompletion(activeSlideIndices);
         console.log(`Active Slide Indices`, activeSlideIndices);
     };
 
-    // Set interval to log active slides every 500ms
     intervalId = setInterval(logActiveSlidePaths, 500);
 
-    // Clear interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 
-  const unlockedBadges: number[] = [];
+  const unlockedBadges: number[] = [0,1];
   const completedBadges: number[] = [0];
+
+  const checkBadgeCompletion = (activeSlideIndices: string[]) => {
+    //TODO
+    for (let i = 0; i < unlockedBadges.length; i++) {
+      console.log("Unlocked Cond: " + badges[unlockedBadges[i]].unlockConditions)
+      if (badges[unlockedBadges[i]].unlockConditions.every((e) => {
+        return activeSlideIndices.includes(e);
+      })) {
+        console.log("Yay!!!" + unlockedBadges[i]);
+        const badgeNumber = unlockedBadges.splice(i, 1)[0];
+        completedBadges.push(badgeNumber);
+        alert("You completed a badge! Check the Secret tab!")
+      }
+    }
+  }
 
   return (
       <Routes>

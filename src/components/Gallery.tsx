@@ -55,7 +55,7 @@ const Gallery: React.FC<GalleryProps> = ({category_count}) => {
     <Swiper
     modules={[Autoplay, EffectCoverflow, Navigation, Pagination, Scrollbar, A11y]}
     spaceBetween={30}
-    autoplay={{delay: 3000, disableOnInteraction: false}}
+    autoplay={{delay: 20000, disableOnInteraction: false}}
     loop={true}
     /** onSlideChange={() =>  } */
     navigation={{

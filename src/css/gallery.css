@@ -73,6 +73,7 @@
     height: 500px;
     width: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .swiper-controller {
@@ -81,7 +82,6 @@
 }
 
 .swiper-controller:hover {
-    height: 500px;
     width: 100%;
 }
 

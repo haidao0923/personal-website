@@ -4,15 +4,69 @@
     background-image: url("https://d29fhpw069ctt2.cloudfront.net/clipart/108101/preview/1312163377_preview_8827.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    border: 1px solid hsl(195, 65%, 85%);
+}
+
+.about-image-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 11%;
+    left: 12%;
+    height: 70%;
+    width: 36%;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image {
+    height: min(20vh, 35vw);
+    width: auto;
+    object-fit: contain;
+    border-radius: 10%;
 }
 
 .typewriter-text {
-    font-size: 3vh;
+    font-size: 2.5vh;
     line-height: 4.1vh;
     position: relative;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
-    top: 9.6%;
+    top: -59.5%;
     left: 53.5%;
     width: 36.6%;
+}
+
+.about-button {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    margin-top: 16px;
+    padding: 5px 10px;
+    border-radius: 0.7em;
+    background: -webkit-linear-gradient(225deg, rgb(251, 175, 21), rgb(251, 21, 242),
+    rgb(21, 198, 251)) 0% 0% / 300% 300%;
+    background-size: 200% auto;
+    -webkit-animation: gradient_move 3s ease infinite;
+            animation: gradient_move 3s ease infinite;
+}
+
+.about-button:not(:disabled):hover {
+    font-size: 18px;
+}
+
+.about-button:disabled {
+    background: rgb(196, 196, 196);
+}
+
+@-webkit-keyframes gradient_move {
+0%{background-position:0% 92%}
+50%{background-position:100% 9%}
+100%{background-position:0% 92%}
+}
+@keyframes gradient_move {
+0%{background-position:0% 92%}
+50%{background-position:100% 9%}
+100%{background-position:0% 92%}
 }

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Document, Page } from 'react-pdf';
 import "../css/about.css";
 import { Navbar } from "../components/NavBar";
 import { NAVBARCONFIG } from "../components/NavBarConfig";
 import { NavBarItemEnum } from "../components/NavBarItem";
 
+
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
-    const inputText = "Hi there! Welcome to my About page. Keep exploring the image gallery and maybe you'll find some fun secrets 😉.";
+    const inputText = "Hi there! My name is Hai Dao. Welcome to my About page. I am always open to learn new things. Send me a message in 'Contact' if you want to do something fun together 😄.";
     const delayBeforeRestart = 5000; // 5 seconds
 
     const startTypingAnimation = () => {
@@ -39,7 +41,16 @@ export const About = (): JSX.Element => {
     <div>
       <Navbar items={NAVBARCONFIG} selectedItem={NavBarItemEnum.ABOUT} />
       <div className="about">
-        <h1 className="typewriter-text" dangerouslySetInnerHTML={{ __html: text }}></h1>
+      <div className="about-image-container">
+        <img className='about-image' src={require(`../images/About/portrait.png`)}/>
+        <button onClick={() => window.location.href=require("../Resume_Formal.pdf")} className="about-button">
+          Resume
+        </button>
+        <button disabled={true} className="about-button">
+          Map
+        </button>
+      </div>
+      <h1 className="typewriter-text" dangerouslySetInnerHTML={{ __html: text }}></h1>
       </div>
     </div>
   );

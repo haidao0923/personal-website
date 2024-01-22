@@ -24,6 +24,7 @@
 
 .email, .name, .message, .submit {
     font-size: 30px;
+    max-width: 80vw;
     padding: 5px;
     font-weight: bold;
 }

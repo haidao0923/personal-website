@@ -25,6 +25,10 @@
     border-radius: 10%;
 }
 
+.about-name {
+    margin-bottom: 0px;
+}
+
 .typewriter-text {
     font-size: 2.5vh;
     line-height: 4.1vh;
@@ -36,9 +40,11 @@
 }
 
 .about-button {
+    border: 2px solid black;
     color: white;
     font-weight: 600;
     font-size: 14px;
+    cursor: pointer;
     width: fit-content;
     height: fit-content;
     align-self: center;
@@ -58,6 +64,7 @@
 
 .about-button:disabled {
     background: rgb(196, 196, 196);
+    cursor: default;
 }
 
 @-webkit-keyframes gradient_move {
@@ -69,4 +76,9 @@
 0%{background-position:0% 92%}
 50%{background-position:100% 9%}
 100%{background-position:0% 92%}
+}
+
+.about-link-button {
+    font-weight: bold;
+    text-decoration: none;
 }

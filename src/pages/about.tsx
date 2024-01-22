@@ -8,7 +8,7 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
-    const inputText = "Hi there! My name is Hai Dao. Welcome to my About page. I am always open to learn new things. Send me a message in 'Contact' if you want to do something fun together 😄.";
+    const inputText = "Hi there! Welcome to my About page. I am always open to learn new things. Send me a message in 'Contact' if you want to do something fun together 😄.";
     const delayBeforeRestart = 5000; // 5 seconds
 
     const startTypingAnimation = () => {
@@ -43,9 +43,16 @@ export const About = (): JSX.Element => {
       <div className="about">
       <div className="about-image-container">
         <img className='about-image' src={require(`../images/About/portrait.png`)}/>
+        <h2 className="about-name">Hai Dao</h2>
         <button onClick={() => window.location.href=require("../Resume_Formal.pdf")} className="about-button">
           Resume
         </button>
+        <a href="https://github.com/haidao0923" className="about-button about-link-button">
+          GitHub
+        </a>
+        <a href="https://legendaryvn.itch.io/" className="about-button about-link-button">
+          Old Game Portfolio
+        </a>
         <button disabled={true} className="about-button">
           Map
         </button>

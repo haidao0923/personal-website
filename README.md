@@ -1,8 +1,8 @@
 # Hai's Hub 😉
 
-Welcome to my personal website! Here you will find a **breathtaking** image gallery of my hobbies, a journal entry **written in real-time**, and a contact page with a ***fun surprise!*** 🤩
+Welcome to my personal website! Here you will find a **breathtaking** interactive image gallery of my hobbies, a journal entry **written in real-time**, fascinating **secret** badges, and a contact page with ***fun surprises!*** 🤩
 
-#### Sliding Gallery, Gradient Background, Rainbow Border, Hidden Text, Live Handwriting, Rotating Slides, Funny Remarks, and much more! 😲
+#### Sliding Gallery, Gradient Background, Image Matching Game, Rainbow Border, Hidden Text, Secret Badges, Live Handwriting, Rotating Slides, Funny Remarks, and much more! 😲
 *Hopefully I've fixed all the visual bug to make the app scalable with all desktop/mobile and different resolutions, but if there are any lingering problems, please reach out through the contact form :)*
 
 ## Pictures

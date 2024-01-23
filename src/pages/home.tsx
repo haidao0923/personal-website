@@ -12,7 +12,7 @@ interface HomeProps {
 
 export const Home: React.FC<HomeProps> = ({getActiveSlideValues}) => {
 
-    const category_count = [12, 23, 17, 13, 8, 13, 3, 16, 5, 2, 5, 14, 11, 9, 7, 21, 2, 6, 32, 17, 1, 3, 9, 0, 2, 2];
+    const category_count = [13, 23, 17, 15, 8, 13, 5, 16, 6, 3, 5, 15, 11, 11, 7, 25, 2, 6, 36, 22, 1, 3, 9, 0, 2, 2];
 
     return (
         <>

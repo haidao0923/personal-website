@@ -44,18 +44,23 @@ export const About = (): JSX.Element => {
       <div className="about-image-container">
         <img className='about-image' src={require(`../images/About/portrait.png`)}/>
         <h2 className="about-name">Hai Dao</h2>
-        <button onClick={() => window.location.href=require("../Resume_Formal.pdf")} className="about-button">
-          Resume
-        </button>
-        <a href="https://github.com/haidao0923" className="about-button about-link-button">
-          GitHub
-        </a>
-        <a href="https://legendaryvn.itch.io/" className="about-button about-link-button">
-          Old Game Portfolio
-        </a>
-        <button disabled={true} className="about-button">
-          Map
-        </button>
+        <div className="about-buttons-container">
+          <button onClick={() => window.location.href=require("../Resume_Formal.pdf")} className="about-button">
+            Resume
+          </button>
+          <a href="https://github.com/haidao0923" className="about-button about-link-button">
+            GitHub
+          </a>
+          <a href="https://haidao0923.github.io/image-mask/" className="about-silart">
+            <img className="about-image-button" src={require(`../images/About/SilArt.png`)}></img>
+          </a>
+          <a href="https://legendaryvn.itch.io/" className="about-button about-link-button">
+            Game Portfolio
+          </a>
+          <button disabled={true} className="about-button">
+            Map
+          </button>
+        </div>
       </div>
       <h1 className="typewriter-text" dangerouslySetInnerHTML={{ __html: text }}></h1>
       </div>

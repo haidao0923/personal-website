@@ -26,6 +26,7 @@
 }
 
 .about-name {
+    margin-top: 0.5vh;
     margin-bottom: 0px;
 }
 
@@ -47,12 +48,13 @@
     flex-direction: column;
   }
 
-@media (min-width: 10px) and (orientation:landscape) {
+@media (orientation:landscape) {
 /* Adjust the width of the buttons container to create a two-column layout */
 .about-buttons-container {
-    gap: 10px;
+    gap: 0px 5px;
     flex-direction: row; /* Two columns */
-    max-width: 25vh;
+    width: 25vw;
+    max-width: 25vw;
 }
 }
 
@@ -64,7 +66,7 @@
     cursor: pointer;
     width: fit-content;
     height: fit-content;
-    margin-top: 16px;
+    margin: 0.5vh 0px;
     padding: 5px 10px;
     border-radius: 0.7em;
     background: -webkit-linear-gradient(225deg, rgb(251, 175, 21), rgb(251, 21, 242),
@@ -114,7 +116,7 @@
 }
 
 .about-silart {
-    margin: 16px 5px 0px 5px;
+    margin: 0.5vh 5px;
     padding: 5px 2px 2px 2px;
     width: fit-content;
     border-radius: 0.7em;

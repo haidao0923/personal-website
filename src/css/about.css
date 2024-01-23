@@ -47,12 +47,12 @@
     flex-direction: column;
   }
 
-@media (min-width: 600px) and (orientation:landscape) {
+@media (min-width: 10px) and (orientation:landscape) {
 /* Adjust the width of the buttons container to create a two-column layout */
 .about-buttons-container {
     gap: 10px;
     flex-direction: row; /* Two columns */
-    max-width: 20vh;
+    max-width: 25vh;
 }
 }
 
@@ -104,6 +104,7 @@
     width: auto;
     border-radius: 0.7em;
     opacity: 70%;
+    margin: 0px 0px;
 }
 
 .about-image-button:hover {
@@ -113,7 +114,7 @@
 }
 
 .about-silart {
-    margin-top: 16px;
+    margin: 16px 5px 0px 5px;
     padding: 5px 2px 2px 2px;
     width: fit-content;
     border-radius: 0.7em;

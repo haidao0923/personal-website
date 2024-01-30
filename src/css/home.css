@@ -61,14 +61,14 @@
     width: 100%; /* 100% of viewport width */
     height: 100%; /* 100% of viewport height */
     z-index: -1;
-    background: linear-gradient(to bottom, red 0%, orange 8.333%, yellow 16.666%, green 25%, blue 33.333%, indigo 41.666%, violet 50%, indigo 58.333%, blue 66.666%, green 75%, yellow 83.333%, orange 91.666%, red 100%);
-    background-size: 100% 300%; /* Larger size to cover all colors */
-    animation: gradientAnimation 30s linear infinite;
+    background: linear-gradient(to bottom, rgb(0, 121, 219) 0%, hsl(207, 100%, 75%) 25%, rgb(85, 152, 253) 50%, hsl(207, 100%, 75%) 75%, rgb(0, 121, 219) 100%);
+    background-size: 100% 200%; /* Larger size to cover all colors */
+    animation: gradientAnimation 10s linear infinite;
   }
 
   @keyframes gradientAnimation {
     0% {
-      background-position: 50% 300%;
+      background-position: 50% 200%;
     }
     100% {
       background-position: 50% 0%; /* Red */

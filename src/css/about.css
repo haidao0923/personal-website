@@ -101,16 +101,16 @@
     text-decoration: none;
 }
 
-.about-image-button {
-    height: 25px;
+.about-silart-button {
+    height: 20px;
     width: auto;
     border-radius: 0.7em;
     opacity: 70%;
     margin: 0px 0px;
 }
 
-.about-image-button:hover {
-    height: 30px;
+.about-silart-button:hover {
+    height: 25px;
     width: auto;
     border-radius: 0.7em;
 }
@@ -126,3 +126,31 @@
     -webkit-animation: gradient_move 3s ease infinite;
             animation: gradient_move 3s ease infinite;
 }
+
+.about-techdle-button {
+    height: 30px;
+    width: auto;
+    margin: 0px 0px;
+    border-radius: 0.7em;
+    background-color: #003057;
+    background: -webkit-linear-gradient(180deg, #003057, rgb(221, 221, 221),
+    #003057) 0% 0% / 300% 300%;
+    background-size: 200% auto;
+    -webkit-animation: gradient_run 1s infinite;
+            animation: gradient_run 1s infinite;
+}
+
+.about-techdle-button:hover {
+    height: 35px;
+    width: auto;
+    border-radius: 0.7em;
+}
+
+@-webkit-keyframes gradient_run {
+    0%{background-position:200% 9%}
+    100%{background-position:0% 92%}
+    }
+    @keyframes gradient_run {
+    0%{background-position:200% 9%}
+    100%{background-position:0% 92%}
+    }

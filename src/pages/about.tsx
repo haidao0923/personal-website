@@ -9,7 +9,7 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
     const inputText = "Hi there! Welcome to my About page. I am always open to learn new things. Send me a message in 'Contact' if you want to do something fun together 😄.";
-    const delayBeforeRestart = 5000; // 5 seconds
+    const delayBeforeRestart = 4000; // 4 seconds
 
     const startTypingAnimation = () => {
         let index = 0;
@@ -27,7 +27,7 @@ export const About = (): JSX.Element => {
         }
       };
 
-      intervalId = setInterval(typingFunction, 150);
+      intervalId = setInterval(typingFunction, 50);
 
       // Run the first iteration immediately
       typingFunction();
@@ -52,7 +52,10 @@ export const About = (): JSX.Element => {
             GitHub
           </a>
           <a href="https://haidao0923.github.io/image-mask/" className="about-silart">
-            <img className="about-image-button" src={require(`../images/About/SilArt.png`)}></img>
+            <img className="about-silart-button" src={require(`../images/About/SilArt.png`)}></img>
+          </a>
+          <a href="https://haidao0923.github.io/techdle/" className="about-techdle">
+            <img className="about-techdle-button" src={require(`../images/About/Techdle.png`)}></img>
           </a>
           <a href="https://legendaryvn.itch.io/" className="about-button about-link-button">
             Game Portfolio

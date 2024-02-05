@@ -5,6 +5,8 @@ import { Navbar } from "../components/NavBar";
 import { NAVBARCONFIG } from "../components/NavBarConfig";
 import { NavBarItemEnum } from "../components/NavBarItem";
 
+import {analytics} from "../firebase.js";
+import { logEvent } from "firebase/analytics";
 
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
@@ -45,7 +47,8 @@ export const About = (): JSX.Element => {
         <img className='about-image' src={require(`../images/About/portrait.png`)}/>
         <h2 className="about-name">Hai Dao</h2>
         <div className="about-buttons-container">
-          <button onClick={() => window.location.href=require("../Resume_Formal.pdf")} className="about-button">
+          <button onClick={() => {console.log("Analyzed"); logEvent(analytics, "click_tested"); console.log("Clicked Tested")}}>Test Analytics</button>
+          <button onClick={() => {console.log("Before Clicked"); window.location.href=require("../Resume_Formal.pdf");}} className="about-button">
             Resume
           </button>
           <a href="https://github.com/haidao0923" className="about-button about-link-button">

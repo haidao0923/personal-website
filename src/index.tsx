@@ -7,6 +7,12 @@ import {HashRouter as Router} from 'react-router-dom'
 
 import { MantineProvider } from '@mantine/core';
 
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-LRETLXVKBX");
+
+// Send pageview with a custom path
+ReactGA.send({ hitType: "pageview", page: "/my-path", title: "Custom Title" });
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -8,6 +8,8 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 import {analytics} from "../firebase.js";
 import { logEvent } from "firebase/analytics";
 
+import ReactGA from 'react-ga4';
+
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
     const inputText = "Hi there! Welcome to my About page. I am always open to learn new things. Send me a message in 'Contact' if you want to do something fun together 😄.";
@@ -37,6 +39,7 @@ export const About = (): JSX.Element => {
 
     useEffect(() => {
       startTypingAnimation(); // Initial start
+      console.log("Typing");
     }, []); // Run once on component mount
 
   return (
@@ -48,7 +51,7 @@ export const About = (): JSX.Element => {
         <h2 className="about-name">Hai Dao</h2>
         <div className="about-buttons-container">
           <button onClick={() => {console.log("Analyzed"); logEvent(analytics, "click_tested"); console.log("Clicked Tested")}}>Test Analytics</button>
-          <button onClick={() => {console.log("Before Clicked"); window.location.href=require("../Resume_Formal.pdf");}} className="about-button">
+          <button onClick={() => {console.log("Before Clicked"); ReactGA.event({ action: 'clicked_resume', category: 'about_page', label: 'about_label', value: 1}); window.location.href=require("../Resume_Formal.pdf");}} className="about-button">
             Resume
           </button>
           <a href="https://github.com/haidao0923" className="about-button about-link-button">

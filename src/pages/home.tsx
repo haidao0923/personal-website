@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/home.css"
 import { Navbar } from "../components/NavBar";
 import { NAVBARCONFIG } from "../components/NavBarConfig";
 import { NavBarItemEnum } from "../components/NavBarItem";
 import Gallery from "../components/Gallery";
 import Rebus from "../components/Rebus";
+
+import {analytics} from "../firebase.js";
+import { logEvent } from "firebase/analytics";
 
 interface HomeProps {
     getActiveSlideValues: () => void;
@@ -13,6 +16,11 @@ interface HomeProps {
 export const Home: React.FC<HomeProps> = ({getActiveSlideValues}) => {
 
     const category_count = [13, 23, 17, 15, 8, 13, 5, 16, 6, 3, 5, 15, 11, 11, 7, 25, 2, 6, 36, 22, 1, 3, 9, 0, 2, 2];
+
+    useEffect(() => {
+        analytics && logEvent(analytics, "page_loaded");
+        console.log("Loaded Page");
+      }, [])
 
     return (
         <>

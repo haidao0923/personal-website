@@ -151,7 +151,7 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
                     onClick={startRebus}
                     onMouseEnter={handlePlayButtonHover}
                     onMouseLeave={handlePlayButtonLeave}>Play re🚌?</button>
-                <h3 className='score-text'>Score: {rebusHighscore}</h3>
+                <h3 className='score-text'>Highscore: {rebusHighscore}</h3>
                 <p className="play-instruction" style={{ display: timer > 0 || isPlayButtonHovered ? 'block' : 'none'}}>
                   {'You will be shown a group of pictures from the gallery -> Quickly match the pictures to the corresponding letter of the alphabet to solve the word'}
                 </p>

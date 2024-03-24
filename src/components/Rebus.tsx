@@ -69,16 +69,16 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
     };
 
     const startRebus = async () => {
-        generateNewWord();
+        let word = generateNewWord();
         setRebusScore(0);
-        setTimer(60);
+        setTimer(30);
 
         const id = setInterval(() => {
           setTimer((prevSeconds) => {
             if (prevSeconds > 0) {
               return prevSeconds - 1;
             } else {
-              alert(`Time's up!`);
+              setTimer(-1);
               clearInterval(id);
               return 0;
             }
@@ -93,7 +93,7 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
         if (!wordList || wordList.length === 0) {
           // Handle the case where wordList is not yet initialized or is empty
           console.error("Word list is not yet available.");
-          return;
+          return null;
         }
 
         const randomIndex = Math.floor(Math.random() * wordList!.length);
@@ -106,6 +106,7 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
         ));
         console.log(newSeed);
         setRandomSeed(newSeed);
+        return newWord;
     };
 
     useEffect(() => {
@@ -124,6 +125,13 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
         }
         };
     }, [intervalId]);
+
+    useEffect(() => {
+      if (timer == -1) {
+        alert(`Time's up! The word was ${randomWord}`);
+        setTimer(0);
+      }
+    }, [timer]) // Timer is -1 when a game expires
 
     const gridStyle = {
         display: timer > 0 ? 'grid' : 'none',

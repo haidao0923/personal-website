@@ -140,7 +140,7 @@
             animation: gradient_run 1s infinite;
 }
 
-.about-techdle-button:hover {
+.about-techdle-button:hover, .about-boardway-button:hover {
     height: 35px;
     width: auto;
     border-radius: 0.7em;
@@ -149,8 +149,16 @@
 @-webkit-keyframes gradient_run {
     0%{background-position:200% 9%}
     100%{background-position:0% 92%}
-    }
-    @keyframes gradient_run {
+}
+@keyframes gradient_run {
     0%{background-position:200% 9%}
     100%{background-position:0% 92%}
-    }
+}
+
+.about-boardway-button {
+    height: 30px;
+    width: auto;
+    margin: 0px 0px;
+    border-radius: 0.7em;
+    background-color: #424242;
+}

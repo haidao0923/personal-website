@@ -34,7 +34,6 @@ export const Secret: React.FC<SecretProps> = ({unlockedBadges, completedBadges})
     <div>
       <Navbar items={NAVBARCONFIG} selectedItem={NavBarItemEnum.SECRET} />
       <div className="secret">
-        <button onClick={() => setClicked(true)}>Click me!</button>
         <h1 className="secret-title">Secrets</h1>
         <div className="badge-grid">
         {displayBadges()}

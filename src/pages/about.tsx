@@ -10,6 +10,11 @@ import { logEvent } from "firebase/analytics";
 
 import ReactGA from 'react-ga4';
 
+ReactGA.initialize("G-LRETLXVKBX");
+
+// Send pageview with a custom path
+ReactGA.send({ hitType: "pageview", page: "/my-path", title: "About Page Title" });
+
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
     const [boardwayButtonImageIndex, setBoardwayButtonImageIndex] = useState(0);
@@ -73,22 +78,22 @@ export const About = (): JSX.Element => {
         <img className='about-image' src={require(`../images/About/portrait.png`)}/>
         <h2 className="about-name">Hai Dao</h2>
         <div className="about-buttons-container">
-          <button onClick={() => {console.log("Before Clicked"); ReactGA.event({ action: 'clicked_resume', category: 'about_page', label: 'about_label', value: 1}); window.location.href=require("../Resume_Formal.pdf");}} className="about-button">
+          <button onClick={() => {ReactGA.event({ action: 'clicked_resume', category: 'about_page', value: 1}); window.location.href=require("../Resume_Formal.pdf");}} className="about-button">
             Resume
           </button>
           <a href="https://github.com/haidao0923" className="about-button about-link-button">
             GitHub
           </a>
-          <a href="https://boardway.vercel.app" className="about-boardway">
+          <a href="https://boardway.vercel.app" className="about-boardway" onClick={() => {ReactGA.event({ action: 'clicked_boardway', category: 'about_page', value: 1})}}>
             <img className="about-boardway-button" src={require(`../images/About/Boardway/${boardwayButtonImageIndex}.png`)}></img>
           </a>
-          <a href="https://haidao0923.github.io/image-mask/" className="about-silart">
+          <a href="https://haidao0923.github.io/image-mask/" className="about-silart" onClick={() => {ReactGA.event({ action: 'clicked_silart', category: 'about_page', value: 1})}}>
             <img className="about-silart-button" src={require(`../images/About/SilArt.png`)}></img>
           </a>
-          <a href="https://haidao0923.github.io/techdle/" className="about-techdle">
+          <a href="https://haidao0923.github.io/techdle/" className="about-techdle" onClick={() => {ReactGA.event({ action: 'clicked_techdle', category: 'about_page', value: 1})}}>
             <img className="about-techdle-button" src={require(`../images/About/Techdle.png`)}></img>
           </a>
-          <a href="https://legendaryvn.itch.io/" className="about-button about-link-button">
+          <a href="https://legendaryvn.itch.io/" className="about-button about-link-button" onClick={() => {ReactGA.event({ action: 'clicked_game_portfolio', category: 'about_page', value: 1})}}>
             Game Portfolio
           </a>
           <button disabled={true} className="about-button">

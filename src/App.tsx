@@ -46,8 +46,8 @@ function App() {
 
   return (
       <Routes>
-        <Route path='/' element={<Home getActiveSlideValues={getActiveSlideValues}/>}/>
-        <Route path='/about' element={<About/>}/>
+        <Route path='/' element={<About/>}/>
+        <Route path='/gallery' element={<Home getActiveSlideValues={getActiveSlideValues}/>}/>
         <Route path='/secret' element={<Secret unlockedBadges={unlockedBadges} completedBadges={completedBadges}/>}/>
         <Route path='/contact' element={<Contact/>}/>
       </Routes>

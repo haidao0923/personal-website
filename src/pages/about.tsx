@@ -37,7 +37,7 @@ export const About = (): JSX.Element => {
           }
       };
 
-      intervalId = setInterval(typingFunction, 50);
+      intervalId = setInterval(typingFunction, 25);
       // Run the first iteration immediately
       typingFunction();
     };

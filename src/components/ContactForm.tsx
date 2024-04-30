@@ -29,7 +29,7 @@ const ContactForm: React.FC = () => {
           }
       };
 
-      intervalId = setInterval(typingFunction, 150);
+      intervalId = setInterval(typingFunction, 50);
 
       // Run the first iteration immediately
       typingFunction();

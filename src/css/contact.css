@@ -35,3 +35,57 @@
     display: flex;
     justify-content: center;
 }
+
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 30%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 80px; /* Adjust this value to your preference */
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 999;
+    overflow-y: auto; /* Added overflow-y to enable vertical scrolling */
+    /* Add any other styles you need for your chat window */
+}
+
+.message-list {
+    padding: 10px;
+    overflow-y: auto; /* Added overflow-y to enable vertical scrolling */
+}
+
+.input-area {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+    border: 1px solid #967474;
+    background-color: #967474;
+    position: fixed;
+    bottom: 60px; /* Adjust this value to your preference */
+    right: 20px;
+    width: 300px;
+    height: 40px;
+}
+
+.input-area input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.input-area button {
+    flex-shrink: 0;
+}

@@ -49,10 +49,10 @@
   }
 
 @media (orientation:landscape) {
-/* Adjust the width of the buttons container to create a two-column layout */
+
 .about-buttons-container {
     gap: 0px 5px;
-    flex-direction: row; /* Two columns */
+    flex-direction: row;
     width: 25vw;
     max-width: 25vw;
 }

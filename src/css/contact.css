@@ -51,31 +51,52 @@
 
 .chat-window {
     position: fixed;
-    bottom: 80px; /* Adjust this value to your preference */
+    bottom: 115px;
     right: 20px;
     width: 300px;
     height: 400px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #ddfcf7;
+    border: 5px solid #c7c9c8;
+    border-radius: 5%;
     z-index: 999;
-    overflow-y: auto; /* Added overflow-y to enable vertical scrolling */
-    /* Add any other styles you need for your chat window */
+    overflow-y: auto;
+}
+
+.user-message-bubble {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin-bottom: 8px;
+    align-self: flex-start;
+}
+
+.ai-message-bubble {
+    background-color: #ccc;
+    color: black;
+    padding: 8px 12px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin-bottom: 8px;
+    align-self: flex-end;
 }
 
 .message-list {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
-    overflow-y: auto; /* Added overflow-y to enable vertical scrolling */
+    overflow-y: auto;
 }
 
 .input-area {
     display: flex;
     justify-content: space-between;
     padding: 5px 0px;
-    border: 1px solid #967474;
-    background-color: #967474;
+    border: 5px solid #414d81;
+    background-color: #414d81;
     position: fixed;
-    bottom: 60px; /* Adjust this value to your preference */
+    bottom: 60px;
     right: 20px;
     width: 300px;
     height: 40px;

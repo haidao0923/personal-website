@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+const UserMessageBubble: React.FC<{ message: string }> = ({ message }) => (
+  <div className="user-message-bubble">
+    {message}
+  </div>
+);
+
+const AIMessageBubble: React.FC<{ message: string }> = ({ message }) => (
+  <div className="ai-message-bubble">
+    AI: {message}
+  </div>
+);
 
 const ChatWindow: React.FC = () => {
     const [inputMessage, setInputMessage] = useState<string>("");
-    const [messages, setMessages] = useState<string[]>([]);
+    const [messages, setMessages] = useState<{ text: string; fromUser: boolean }[]>([]);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const handleMessageSend = () => {
         if (inputMessage.trim() !== "") {
-          setMessages([...messages, inputMessage]);
+          setMessages([...messages, { text: inputMessage, fromUser: true }, {text: "Generating response...", fromUser: false}]);
           setInputMessage("");
         }
     };
@@ -17,11 +30,22 @@ const ChatWindow: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        // Scroll to bottom when messages change
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+        }
+      }, [messages]);
+
     return (
-        <div className="chat-window">
+        <div className="chat-window" ref={messagesEndRef}>
             <div className="message-list">
                 {messages.map((message, index) => (
-                <div key={index}>{message}</div>
+                    message.fromUser ? (
+                        <UserMessageBubble key={index} message={message.text} />
+                    ) : (
+                        <AIMessageBubble key={index} message={message.text} />
+                    )
                 ))}
             </div>
             <div className="input-area">

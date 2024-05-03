@@ -165,7 +165,7 @@ const Rebus: React.FC<RebusProps> = ({imageUrls, numberOfColumns, category_count
                   key={index}
                   className='gridItem'
                   src={imageUrls[letter.charCodeAt(0) - 97][randomSeed[index]]}
-                  onClick={() => openPopup(require(`../images/${letter.toUpperCase()}/${randomSeed[index]}.png`))}
+                  onClick={() => openPopup(imageUrls[letter.charCodeAt(0) - 97][randomSeed[index]])}
                 />
             ))}
             </div>

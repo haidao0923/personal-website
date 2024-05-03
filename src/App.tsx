@@ -60,9 +60,10 @@ function App() {
   useEffect(() => {
     const storage = getStorage();
 
-    const retrieveImages = async (imageCounts: number[]) => {
+    const retrieveImages = async () => {
       const tempImageUrls: string[][] = []
-      for (let folderIndex = 0; folderIndex < imageCounts.length; folderIndex++) {
+
+      for (let folderIndex = 0; folderIndex < 26; folderIndex++) {
         const folderUrls: string[] = [];
 
         const folderRef = ref(
@@ -72,14 +73,14 @@ function App() {
 
         try {
           const { items } = await listAll(folderRef);
-          for (const itemRef of items) {
+          await Promise.all(items.map(async (itemRef) => {
             try {
               const url = await getDownloadURL(itemRef);
               folderUrls.push(url);
             } catch (error) {
               console.error('Error fetching image:', error);
             }
-          }
+          }));
           tempImageUrls.push(folderUrls);
         } catch (error) {
           console.error('Error listing folder:', error);
@@ -89,7 +90,7 @@ function App() {
       setImageUrls(tempImageUrls);
     };
 
-    retrieveImages(category_count);
+    retrieveImages();
     console.log("Hey! Is this running multiple times?")
     console.log("New ImageURLS", imageUrls)
   }, []);

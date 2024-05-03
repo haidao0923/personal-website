@@ -9,6 +9,8 @@ import Rebus from "../components/Rebus";
 import {analytics} from "../firebase.js";
 import { logEvent } from "firebase/analytics";
 
+import LoadingScreen from "../components/LoadingScreen";
+
 interface HomeProps {
     imageUrls: string[][];
     getActiveSlideValues: () => void;
@@ -31,8 +33,9 @@ export const Home: React.FC<HomeProps> = ({imageUrls, getActiveSlideValues}) => 
                 selectedItem={NavBarItemEnum.HOME}/>
                 <h2 className="quote">"I am more than the sum of my parts, but if you insists 😜"</h2>
                 <p className="gallery-instruction">Click or Tap on the image to enlarge<br></br>For the purpose of unlocking 'secrets', the left most image in each slides are considered 'in-focused'</p>
-                <Rebus numberOfColumns={4} category_count={category_count}/>
+                <Rebus imageUrls={imageUrls} numberOfColumns={4} category_count={category_count}/>
                 <Gallery imageUrls={imageUrls} category_count={category_count} getActiveSlideValues={getActiveSlideValues}/>
+                {imageUrls.length < 26 && <LoadingScreen></LoadingScreen>}
             </div>
             Test
 

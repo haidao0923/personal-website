@@ -18,45 +18,6 @@
     color: white;
 }
 
-.play-prompt {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-.play-button {
-    width: fit-content;
-    margin: 0 0;
-    color: black;
-    font-weight: bold;
-}
-
-.play-button:hover {
-    transform: scale(1.2);
-    background: conic-gradient(
-      from 0deg,
-      #fd004c,
-      #fe9000,
-      #fff020,
-      #3edf4b,
-      #3363ff,
-      #b102b7,
-      #fd004c
-    );
-}
-
-.play-prompt:hover .play-instruction {
-    display: block;
-}
-
-.play-instruction {
-    width: 60%;
-    text-align: center;
-    text-shadow: 2px 2px 5px black;
-    color: white;
-    margin: 0 0;
-}
-
 .home {
     width: 100%;
     height: 100%;

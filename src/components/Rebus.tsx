@@ -4,11 +4,12 @@ import {SimpleGrid} from '@mantine/core';
 import word_list from  "../lists/word_list.txt";
 
 interface RebusProps {
+    imageUrls: string[][],
     numberOfColumns: number,
     category_count: number[];
 }
 
-const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
+const Rebus: React.FC<RebusProps> = ({imageUrls, numberOfColumns, category_count}) => {
     const [wordList, setWordList] = useState<string[] | null>([]);
     const [randomWord, setRandomWord] = useState<string | null>(null);
     const [randomSeed, setRandomSeed] = useState<number[]>([]);
@@ -149,8 +150,9 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
                 <button
                     className="play-button"
                     onClick={startRebus}
-                    onMouseEnter={handlePlayButtonHover}
-                    onMouseLeave={handlePlayButtonLeave}>Play re🚌?</button>
+                    onMouseEnter={imageUrls.length < 26 ? undefined : handlePlayButtonHover}
+                    onMouseLeave={handlePlayButtonLeave}
+                    disabled={imageUrls.length < 26}>Play re🚌?</button>
                 <h3 className='score-text'>Highscore: {rebusHighscore}</h3>
                 <p className="play-instruction" style={{ display: timer > 0 || isPlayButtonHovered ? 'block' : 'none'}}>
                   {'You will be shown a group of pictures from the gallery -> Quickly match the pictures to the corresponding letter of the alphabet to solve the word'}
@@ -162,7 +164,7 @@ const Rebus: React.FC<RebusProps> = ({numberOfColumns, category_count}) => {
                 <img
                   key={index}
                   className='gridItem'
-                  src={require(`../images/${letter.toUpperCase()}/${randomSeed[index]}.png`)}
+                  src={imageUrls[letter.charCodeAt(0) - 97][randomSeed[index]]}
                   onClick={() => openPopup(require(`../images/${letter.toUpperCase()}/${randomSeed[index]}.png`))}
                 />
             ))}

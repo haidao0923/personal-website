@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/personal-website/static/css/main.a2c4ff08.css",
-    "main.js": "/personal-website/static/js/main.f40bb80d.js",
+    "main.js": "/personal-website/static/js/main.f1001647.js",
     "static/js/787.5809834d.chunk.js": "/personal-website/static/js/787.5809834d.chunk.js",
     "static/media/17.png": "/personal-website/static/media/17.a819bdea064bfee370b2.png",
     "static/media/16.png": "/personal-website/static/media/16.c2f8a6acf7f37f46ea26.png",
@@ -27,18 +27,17 @@
     "static/media/portrait.png": "/personal-website/static/media/portrait.1d1d5180073b5107b719.png",
     "static/media/Resume_Formal.pdf": "/personal-website/static/media/Resume_Formal.357c918febc2c5c2e544.pdf",
     "static/media/tree1.png": "/personal-website/static/media/tree1.b2a946cd08d83455a773.png",
-    "static/media/badge-icon.png": "/personal-website/static/media/badge-icon.2200aba253c488db85e7.png",
     "static/media/filled-star.png": "/personal-website/static/media/filled-star.9f4c66758fe3df561488.png",
     "static/media/Techdle.png": "/personal-website/static/media/Techdle.a8ad99293c0c1d8f917d.png",
     "static/media/SilArt.png": "/personal-website/static/media/SilArt.fae7d9ce5ef13cb92c21.png",
     "static/media/word_list.txt": "/personal-website/static/media/word_list.f82f58467acb978bcf48.txt",
     "index.html": "/personal-website/index.html",
     "main.a2c4ff08.css.map": "/personal-website/static/css/main.a2c4ff08.css.map",
-    "main.f40bb80d.js.map": "/personal-website/static/js/main.f40bb80d.js.map",
+    "main.f1001647.js.map": "/personal-website/static/js/main.f1001647.js.map",
     "787.5809834d.chunk.js.map": "/personal-website/static/js/787.5809834d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2c4ff08.css",
-    "static/js/main.f40bb80d.js"
+    "static/js/main.f1001647.js"
   ]
 }

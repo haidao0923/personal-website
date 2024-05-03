@@ -8,8 +8,6 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 import {analytics} from "../firebase.js";
 import { logEvent } from "firebase/analytics";
 
-import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-
 import ReactGA from 'react-ga4';
 
 ReactGA.initialize("G-LRETLXVKBX");
@@ -67,41 +65,12 @@ export const About = (): JSX.Element => {
       console.log("Boardway Sprite Change Started");
     }, []);
 
-    const [imageUrls, setImageUrls] = useState<string[]>([]);
-
-    useEffect(() => {
-      const storage = getStorage();
-
-      const retrieveImages = async () => {
-        const imageRefs = [
-          ref(storage, 'gallery_images/A/0.png'),
-          ref(storage, 'gallery_images/A/1.png'),
-          ref(storage, 'gallery_images/A/2.png'),
-        ]; // Array of image references
-
-        const imageUrls = [];
-        for (const imageRef of imageRefs) {
-          try {
-            const url = await getDownloadURL(imageRef);
-            imageUrls.push(url);
-          } catch (error) {
-            console.error('Error fetching image:', error);
-          }
-        }
-
-        setImageUrls(imageUrls);
-      };
-
-      retrieveImages();
-    }, []);
-
   return (
     <div>
       <Navbar items={NAVBARCONFIG} selectedItem={NavBarItemEnum.ABOUT} />
       <div className="about">
       <div className="about-image-container">
         <img className='about-image' src={require(`../images/About/portrait.png`)}/>
-        <img className='about-image' src={imageUrls[0]}/>
 
         <h2 className="about-name">Hai Dao</h2>
         <div className="about-buttons-container">

@@ -8,18 +8,18 @@ import { NavBarItemEnum } from "../components/NavBarItem";
 import {analytics} from "../firebase.js";
 import { logEvent } from "firebase/analytics";
 
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+
 import ReactGA from 'react-ga4';
 
 ReactGA.initialize("G-LRETLXVKBX");
-
-// Send pageview with a custom path
 ReactGA.send({ hitType: "pageview", page: "/my-path", title: "About Page Title" });
 
 export const About = (): JSX.Element => {
     const [text, setText] = useState<string>('');
     const [boardwayButtonImageIndex, setBoardwayButtonImageIndex] = useState(0);
     const inputText = "Hi there! Welcome to my About page. I am always open to learn new things. Send me a message in 'Contact' if you want to do something fun together 😄.";
-    const delayBeforeRestart = 4000; // 4 seconds
+    const delayBeforeRestart = 4000;
 
     const startTypingAnimation = () => {
       let index = 0;
@@ -32,13 +32,12 @@ export const About = (): JSX.Element => {
           } else {
             clearInterval(intervalId);
             setTimeout(() => {
-              startTypingAnimation(); // Restart typing animation
+              startTypingAnimation();
             }, delayBeforeRestart);
           }
       };
 
       intervalId = setInterval(typingFunction, 25);
-      // Run the first iteration immediately
       typingFunction();
     };
 
@@ -48,8 +47,8 @@ export const About = (): JSX.Element => {
 
       const boardwaySpriteChangeFunction = () => {
         setBoardwayButtonImageIndex(index);
-        index = (index + 1) % 19; // 19 frames from 0 to 18
-        return () => clearInterval(intervalId); // Clear interval on unmount
+        index = (index + 1) % 19;
+        return () => clearInterval(intervalId);
       }
 
       intervalId = setInterval(boardwaySpriteChangeFunction, 100);
@@ -58,17 +57,44 @@ export const About = (): JSX.Element => {
 
     }
 
-
-
     useEffect(() => {
-      startTypingAnimation(); // Initial start
+      startTypingAnimation();
       console.log("Typing");
-    }, []); // Run once on component mount
+    }, []);
 
     useEffect(() => {
-      startBoardwaySpriteChange(); // Initial start
+      startBoardwaySpriteChange();
       console.log("Boardway Sprite Change Started");
-    }, []); // Run once on component mount
+    }, []);
+
+    const [imageUrls, setImageUrls] = useState<string[]>([]);
+
+    useEffect(() => {
+      const storage = getStorage();
+
+      const retrieveImages = async () => {
+        const imageRefs = [
+          ref(storage, 'gallery_images/A/0.png'),
+          ref(storage, 'gallery_images/A/1.png'),
+          ref(storage, 'gallery_images/A/2.png'),
+        ]; // Array of image references
+
+        const imageUrls = [];
+        for (const imageRef of imageRefs) {
+          try {
+            const url = await getDownloadURL(imageRef);
+            imageUrls.push(url);
+          } catch (error) {
+            console.error('Error fetching image:', error);
+            // Handle errors appropriately, e.g., display an error message
+          }
+        }
+
+        setImageUrls(imageUrls); // Update state with retrieved URLs
+      };
+
+      retrieveImages(); // Call the function to fetch images on component mount
+    }, []); // Empty dependency array ensures fetching happens only once
 
   return (
     <div>
@@ -76,6 +102,8 @@ export const About = (): JSX.Element => {
       <div className="about">
       <div className="about-image-container">
         <img className='about-image' src={require(`../images/About/portrait.png`)}/>
+        <img className='about-image' src={imageUrls[0]}/>
+
         <h2 className="about-name">Hai Dao</h2>
         <div className="about-buttons-container">
           <button onClick={() => {ReactGA.event({ action: 'clicked_resume', category: 'about_page', value: 1}); window.location.href=require("../Resume_Formal.pdf");}} className="about-button">

@@ -13,15 +13,7 @@ import "../css/gallery.css"
 
 const category_labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
                         "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-const category_names = ["(Archery, Arcade, Anime)", "Board Games", "Cooking",
-                        "Dancing", "Electronics", "Fighting",
-                        "God", "Hiking", "Improv",
-                        "Jokes", "K(c)rafting", "Language",
-                        "Music", "nods", "ods",
-                        "poi", "qdfs", "reading",
-                        "seek discomfort", "traveling", "upcycling",
-                        "volunteering", "woodworking", "x",
-                        "yugioh", "zebra"]
+
 
 interface GalleryProps {
   category_count: number[],

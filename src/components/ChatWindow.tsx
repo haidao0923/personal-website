@@ -32,7 +32,7 @@ const ChatWindow: React.FC = () => {
 
     useEffect(() => {
         if (genAI) {
-          setModel(genAI.getGenerativeModel({model: "gemini-1.5-pro-latest"}));
+          setModel(genAI.getGenerativeModel({model: "gemini-1.0-pro-latest"}));
           console.log(`Model set`)
         }
     }, [genAI])

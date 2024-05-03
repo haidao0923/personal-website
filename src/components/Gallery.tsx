@@ -9,8 +9,6 @@ import 'swiper/css/effect-fade';
 
 import "../css/gallery.css"
 
-import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-
 
 
 // Note that we need more than 2x *slide per view (7) = 14 entries to have smooth transition
@@ -38,10 +36,6 @@ const Gallery: React.FC<GalleryProps> = ({imageUrls, category_count, getActiveSl
       setPopupImage('');
       setShowPopup(false);
     };
-
-    useEffect(() => {
-      console.log("Here are the ImageUrls: " + imageUrls)
-    }, [imageUrls])
 
     const galleryItems = category_labels.map((_, index) => (
     <div key={index} className="gallery-entry">
@@ -97,7 +91,7 @@ const Gallery: React.FC<GalleryProps> = ({imageUrls, category_count, getActiveSl
                 <div className='slide-border'>
                   {imageUrls.length > 0 ? (<img className='gallery-image' src={imageUrls[index][slideIndex]}
                       alt={`Image ${slideIndex}`}
-                      onClick={() => {openPopup(require(`../images/${category_labels[index]}/${slideIndex}.png`)); console.log("Test")}}/>) : ""}
+                      onClick={() => {openPopup(imageUrls[index][slideIndex]); console.log("Test")}}/>) : ""}
                 </div>
               </div>
             )}

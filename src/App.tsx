@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import {Home} from './pages/home';
 import {About} from './pages/about';
@@ -11,12 +11,89 @@ import {
 
 import badges from "./lists/badge_list";
 
+import { getStorage, ref, getDownloadURL, listAll } from 'firebase/storage';
 
 function App() {
 
   useEffect(() => {
     document.title = "Hai's Hub"
   }, [])
+
+  const [imageUrls, setImageUrls] = useState<string[][]>([]);
+  const category_count = [13, 23, 17, 15, 8, 13, 5, 16, 6, 3, 5, 15, 11, 11, 7, 25, 2, 6, 36, 22, 1, 3, 9, 0, 2, 2];
+/*
+  useEffect(() => {
+    const storage = getStorage();
+
+    const retrieveImages = async (imageCounts: number[]) => {
+      const tempImageUrls: string[][] = []
+      for (let folderIndex = 0; folderIndex < imageCounts.length; folderIndex++) {
+        const folderCount = imageCounts[folderIndex];
+        const folderUrls: string[] = [];
+
+        for (let imageIndex = 0; imageIndex < folderCount; imageIndex++) {
+          const imageRef = ref(
+            storage,
+            `gallery_images/${String.fromCharCode(65 + folderIndex)}/${imageIndex}.png`
+          );
+
+          try {
+            const url = await getDownloadURL(imageRef);
+            folderUrls.push(url);
+          } catch (error) {
+            console.error('Error fetching image:', error);
+          }
+        }
+
+        tempImageUrls.push(folderUrls);
+      }
+      console.log("More testing", tempImageUrls)
+      setImageUrls(tempImageUrls);
+    };
+
+    retrieveImages(category_count);
+    console.log("Hey! Is this running multiple times?")
+    console.log("New ImageURLS", imageUrls)
+  }, []);
+*/
+
+  useEffect(() => {
+    const storage = getStorage();
+
+    const retrieveImages = async (imageCounts: number[]) => {
+      const tempImageUrls: string[][] = []
+      for (let folderIndex = 0; folderIndex < imageCounts.length; folderIndex++) {
+        const folderUrls: string[] = [];
+
+        const folderRef = ref(
+          storage,
+          `gallery_images/${String.fromCharCode(65 + folderIndex)}/`
+        );
+
+        try {
+          const { items } = await listAll(folderRef);
+          for (const itemRef of items) {
+            try {
+              const url = await getDownloadURL(itemRef);
+              folderUrls.push(url);
+            } catch (error) {
+              console.error('Error fetching image:', error);
+            }
+          }
+          tempImageUrls.push(folderUrls);
+        } catch (error) {
+          console.error('Error listing folder:', error);
+        }
+      }
+      console.log("More testing", tempImageUrls)
+      setImageUrls(tempImageUrls);
+    };
+
+    retrieveImages(category_count);
+    console.log("Hey! Is this running multiple times?")
+    console.log("New ImageURLS", imageUrls)
+  }, []);
+
 
   const getActiveSlideValues = () => {
     const activeSlides = document.querySelectorAll(`.active-slider`);
@@ -47,7 +124,7 @@ function App() {
   return (
       <Routes>
         <Route path='/' element={<About/>}/>
-        <Route path='/gallery' element={<Home getActiveSlideValues={getActiveSlideValues}/>}/>
+        <Route path='/gallery' element={<Home imageUrls={imageUrls} getActiveSlideValues={getActiveSlideValues}/>}/>
         <Route path='/secret' element={<Secret unlockedBadges={unlockedBadges} completedBadges={completedBadges}/>}/>
         <Route path='/contact' element={<Contact/>}/>
       </Routes>

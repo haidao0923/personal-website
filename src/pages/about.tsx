@@ -86,15 +86,14 @@ export const About = (): JSX.Element => {
             imageUrls.push(url);
           } catch (error) {
             console.error('Error fetching image:', error);
-            // Handle errors appropriately, e.g., display an error message
           }
         }
 
-        setImageUrls(imageUrls); // Update state with retrieved URLs
+        setImageUrls(imageUrls);
       };
 
-      retrieveImages(); // Call the function to fetch images on component mount
-    }, []); // Empty dependency array ensures fetching happens only once
+      retrieveImages();
+    }, []);
 
   return (
     <div>

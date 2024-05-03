@@ -10,10 +10,11 @@ import {analytics} from "../firebase.js";
 import { logEvent } from "firebase/analytics";
 
 interface HomeProps {
+    imageUrls: string[][];
     getActiveSlideValues: () => void;
 }
 
-export const Home: React.FC<HomeProps> = ({getActiveSlideValues}) => {
+export const Home: React.FC<HomeProps> = ({imageUrls, getActiveSlideValues}) => {
 
     const category_count = [13, 23, 17, 15, 8, 13, 5, 16, 6, 3, 5, 15, 11, 11, 7, 25, 2, 6, 36, 22, 1, 3, 9, 0, 2, 2];
 
@@ -31,7 +32,7 @@ export const Home: React.FC<HomeProps> = ({getActiveSlideValues}) => {
                 <h2 className="quote">"I am more than the sum of my parts, but if you insists 😜"</h2>
                 <p className="gallery-instruction">Click or Tap on the image to enlarge<br></br>For the purpose of unlocking 'secrets', the left most image in each slides are considered 'in-focused'</p>
                 <Rebus numberOfColumns={4} category_count={category_count}/>
-                <Gallery category_count={category_count} getActiveSlideValues={getActiveSlideValues}/>
+                <Gallery imageUrls={imageUrls} category_count={category_count} getActiveSlideValues={getActiveSlideValues}/>
             </div>
             Test
 

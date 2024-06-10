@@ -4,14 +4,14 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 
 const UserMessageBubble: React.FC<{ message: string }> = ({ message }) => (
-  <div className="user-message-bubble">
-    {message}
-  </div>
+    <div className="user-message-bubble">
+        {message}
+    </div>
 );
 
 const AIMessageBubble: React.FC<{ message: string }> = ({ message }) => (
-  <div className="ai-message-bubble" dangerouslySetInnerHTML={{ __html: message }}>
-  </div>
+    <div className="ai-message-bubble" dangerouslySetInnerHTML={{ __html: message }}>
+    </div>
 );
 
 const ChatWindow: React.FC = () => {
@@ -20,6 +20,7 @@ const ChatWindow: React.FC = () => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const [genAI, setGenAI] = useState<any>(null)
     const [model, setModel] = useState<any>(null)
+    const [chat, setChat] = useState<any>(null)
     const [isGeneratingResponse, setIsGeneratingResponse] = useState(false);
     const [chatInput, setChatInput] = useState<string>("");
 
@@ -32,10 +33,17 @@ const ChatWindow: React.FC = () => {
 
     useEffect(() => {
         if (genAI) {
-          setModel(genAI.getGenerativeModel({model: "gemini-1.0-pro-latest"}));
-          console.log(`Model set`)
+            setModel(genAI.getGenerativeModel({model: "gemini-1.0-pro-latest"}));
+            console.log("Model set")
         }
     }, [genAI])
+
+    useEffect(() => {
+        if (model) {
+            setChat(model.startChat())
+            console.log("Chat session started")
+        }
+    }, [model])
 
 
     const handleSendMessage = (message: string) => {
@@ -60,7 +68,7 @@ const ChatWindow: React.FC = () => {
 
     async function respond(inputPrompt: string) {
         try {
-            const result = await model.generateContent(inputPrompt);
+            const result = await chat.sendMessage(inputPrompt);
             const response = await result.response;
             const text = response.text();
             console.log(text);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import "../css/rebus.css";
-import {SimpleGrid} from '@mantine/core';
 import word_list from  "../lists/word_list.txt";
 
 interface RebusProps {

@@ -24,7 +24,7 @@ const ChatWindow: React.FC = () => {
     const [chatInput, setChatInput] = useState<string>("");
 
     useEffect(() => {
-        setGenAI(new GoogleGenerativeAI("AIzaSyCGMdvEiIt20lFqC9udPhj6rlzIqhDIMqw"));
+        setGenAI(new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY));
         setTimeout(() => {
             setMessages(prevMessage => [...messages, { text: "Hey there, I'm a chatbot integrated using Google Gemini. I'm still in development to be more Hai-like.", fromUser: false}]);
         }, 1000)

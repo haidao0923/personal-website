@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { marked } from 'marked';
+import { HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 
@@ -24,6 +25,27 @@ const ChatWindow: React.FC = () => {
     const [isGeneratingResponse, setIsGeneratingResponse] = useState(false);
     const [chatInput, setChatInput] = useState<string>("");
 
+    const safetySettings = [
+
+        {
+            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+        {
+            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+        {
+            category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+        {
+            category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+
+    ];
+
     useEffect(() => {
         setGenAI(new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY));
         setTimeout(() => {
@@ -33,7 +55,7 @@ const ChatWindow: React.FC = () => {
 
     useEffect(() => {
         if (genAI) {
-            setModel(genAI.getGenerativeModel({model: "gemini-1.0-pro-latest"}));
+            setModel(genAI.getGenerativeModel({model: "gemini-1.0-pro-latest", safetySettings}));
             console.log("Model set")
         }
     }, [genAI])
@@ -41,6 +63,7 @@ const ChatWindow: React.FC = () => {
     useEffect(() => {
         if (model) {
             setChat(model.startChat({
+                safetySettings,
                 history: [
                     {
                       role: "user",
@@ -84,6 +107,7 @@ const ChatWindow: React.FC = () => {
         try {
             const result = await chat.sendMessage(inputPrompt);
             const response = await result.response;
+            console.log("%j", response)
             const text = response.text();
             console.log(text);
             displayResponseMessage(text)

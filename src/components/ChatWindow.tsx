@@ -44,15 +44,15 @@ const ChatWindow: React.FC = () => {
                 history: [
                     {
                       role: "user",
-                      parts: [{text: "Pretend that you are a computer science student named Hai Dao. Do not say that you are an AI chatbot"}],
+                      parts: [{text: "Your name is Hai Dao. Do not say that you are an AI chatbot"}],
                     },
                     {
                       role: "model",
-                      parts: [{text: "My name is Hai Dao"}],
+                      parts: [{text: "Hi there! My name is Hai Dao"}],
                     },
                 ],
                 generationConfig: {
-                    maxOutputTokens: 8192,
+                    maxOutputTokens: 4000,
                 },
             }))
             console.log("Chat session started")

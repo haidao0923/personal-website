@@ -5,8 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {HashRouter as Router} from 'react-router-dom'
 
-import { MantineProvider } from '@mantine/core';
-
 import ReactGA from "react-ga4";
 
 ReactGA.initialize("G-LRETLXVKBX");
@@ -19,9 +17,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Router>
-    <MantineProvider>
       <App />
-    </MantineProvider>
   </Router>
 );
 

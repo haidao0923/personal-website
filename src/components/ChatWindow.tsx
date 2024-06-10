@@ -40,9 +40,23 @@ const ChatWindow: React.FC = () => {
 
     useEffect(() => {
         if (model) {
-            setChat(model.startChat())
+            setChat(model.startChat({
+                history: [
+                    {
+                      role: "user",
+                      parts: [{text: "Pretend that you are a computer science student named Hai Dao. Do not say that you are an AI chatbot"}],
+                    },
+                    {
+                      role: "model",
+                      parts: [{text: "My name is Hai Dao"}],
+                    },
+                ],
+                generationConfig: {
+                    maxOutputTokens: 8192,
+                },
+            }))
             console.log("Chat session started")
-        }
+        };
     }, [model])
 
 

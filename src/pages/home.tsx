@@ -37,8 +37,6 @@ export const Home: React.FC<HomeProps> = ({imageUrls, getActiveSlideValues}) => 
                 <Gallery imageUrls={imageUrls} category_count={category_count} getActiveSlideValues={getActiveSlideValues}/>
                 {imageUrls.length < 26 && <LoadingScreen></LoadingScreen>}
             </div>
-            Test
-
         </>
 
     )

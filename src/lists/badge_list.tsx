@@ -19,17 +19,17 @@ class Badge {
 const imageRoot = "../images/Badges/";
 
 const badge1 = new Badge(
-"Tree I",
-"Description for Badge 1",
-image1, // Replace with the actual image path
-["A5", "B0"]
+    "Tree I",
+    "Description for Badge 1",
+    image1, // Replace with the actual image path
+    ["A5", "B0"]
 );
 
 const badge2 = new Badge(
-"Tree II",
-"Description for Badge 2",
-image2, // Replace with the actual image path
-["A6", "B2", "C3"]
+    "Tree II",
+    "Description for Badge 2",
+    image2, // Replace with the actual image path
+    ["A6", "B2", "C3"]
 );
 
 const badge3 = new Badge(
@@ -37,7 +37,7 @@ const badge3 = new Badge(
     "Description for Badge 3",
     image3, // Replace with the actual image path
     ["A6", "D2", "C3"]
-    );
+);
 // Array of badges
 const badges: Badge[] = [badge1, badge2, badge3];
 
